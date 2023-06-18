@@ -31,7 +31,7 @@ SECRET_KEY = config('SECRET_KEY')
 DEBUG = False
 
 if not DEBUG:
-    ALLOWED_HOSTS = ["www.meridian-website.herokuapp.com"]
+    ALLOWED_HOSTS = ['meridian-website-d6a0f6439541.herokuapp.com']
 else: ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 
 # Added
