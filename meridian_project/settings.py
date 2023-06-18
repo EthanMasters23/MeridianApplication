@@ -44,7 +44,7 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'meridian_app/static'),
 ]
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
@@ -194,6 +194,6 @@ LOGGING = {
     },
 }
 
-STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
-if __name__ == '__main__':
-    django_on_heroku.settings(locals())
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+django_on_heroku.settings(locals())
