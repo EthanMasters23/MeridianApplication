@@ -93,3 +93,28 @@
     left: 78px;
   }
 }
+@media(max-width: 479px) {
+  .component-container {
+    width: 312px;
+    font-size: 10;
+    padding-left: 2px;
+  }
+  .component-text {
+    top: 0px;
+    left: 27px;
+    font-size: 10;
+  }
+  .component-text2 {
+    top: 0px;
+    right: 42px;
+    font-size: 10;
+  }
+  .component-text4 {
+    top: 0px;
+    left: 140px;
+    font-size: 10;
+  }
+  .component-text6 {
+    font-size: 10;
+  }
+}

@@ -1,6 +1,7 @@
 
 {% load static %}
 
+
 <!DOCTYPE html>
 <html lang="english">
   <head>
@@ -30,15 +31,14 @@
 
       }
     </style>
-
     <link rel="stylesheet" href="{% static 'style.css' %}" />
     <link rel="stylesheet" href="{% static 'frame.css' %}" />
-
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;display=swap"
       data-tag="font"
     />
+    <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
     <div>
@@ -69,58 +69,65 @@
             />
           </div>
           <div class="frame-contact">
-            <!-- <form action="{% url 'send_email' %}" method="post">
-              {% csrf_token %}
-              <input type="text" id="name" name="name" placeholder="Your name">
-              <input type="email" id="email" name="email" placeholder="Your email">
-              <textarea id="message" name="message" placeholder="Your message"></textarea>
-              <button type="submit">Submit</button>
-          </form> -->
-            <img
-              alt="contactbox525"
-              src="{% static 'public/external/contactbox525-nbu-600h.png' %}"
-              class="frame-contactbox"
-            />
-            <span class="frame-text"><span>TEL +1 404-591-1211</span></span>
-            <span class="frame-text02">
-              <span>
-                <span>General Inquiries:</span>
-                <br />
-                <span>keir.masters@meridianatl.com</span>
+            <div class="frame-innercontact">
+              <img
+                alt="contactbox525"
+                src="{% static 'public/external/contactbox525-nbu-600h.png' %}"
+                class="frame-contactbox"
+              />
+              <span class="frame-tel"><span>TEL +1 404-591-1211</span></span>
+              <span class="frame-general">
+                <span>
+                  <span>General Inquiries:</span>
+                  <br />
+                  <span>keir.masters@meridianatl.com</span>
+                </span>
               </span>
-            </span>
-            <span class="frame-text07"><span>Email</span></span>
-            <span class="frame-text09"><span>Phone</span></span>
-            <img
-              alt="nametext1067"
-              src="{% static 'public/external/nametext1067-kri6-400w.png' %}"
-              class="frame-nametext"
-            />
-            <img
-              alt="emailtext1068"
-              src="{% static 'public/external/emailtext1068-45g-400w.png' %}"
-              class="frame-emailtext"
-            />
-            <img
-              alt="phonenumbertext1069"
-              src="{% static 'public/external/phonenumbertext1069-trpg-400w.png' %}"
-              class="frame-phonenumbertext"
-            />
-            <span class="frame-text11"><span>Submit</span></span>
-            <img
-              alt="submitline1070"
-              src="{% static 'public/external/submitline1070-gmx4.svg' %}"
-              class="frame-submitline"
-            />
-            <span class="frame-text13"><span>Name</span></span>
-            <span class="frame-text15">
-              <span>Meridian Intelligent Systems</span>
-            </span>
-            <span class="frame-text17">
-              <span>
+              <span class="frame-email-header"><span>Email</span></span>
+              <span class="frame-phone-header"><span>Phone</span></span>
+              <div class="frame-email-container">
+                <img
+                  alt="emailtext1068"
+                  src="{% static 'public/external/emailtext1068-45g-400w.png' %}"
+                  class="frame-emailtext"
+                />
+                <span class="frame-email-response">
+                  ethansmasters@outlook.com
+                </span>
+              </div>
+              <div class="frame-name-container">
+                <img
+                  alt="emailtext1068"
+                  src="{% static 'public/external/emailtext1068-45g-400w.png' %}"
+                  class="frame-name-text"
+                />
+                <span class="frame-email-response1">
+                  ethansmasters@outlook.com
+                </span>
+              </div>
+              <div class="frame-phone-number-container">
+                <img
+                  alt="phonenumbertext1069"
+                  src="{% static 'public/external/phonenumbertext1069-trpg-400w.png' %}"
+                  class="frame-phonenumbertext"
+                />
+                <span class="frame-phoneresponse">
+                  ethansmasters@outlook.com
+                </span>
+              </div>
+              <span class="frame-submit"><span>Submit</span></span>
+              <span class="frame-text08">Meridian Intelligent Systems</span>
+              <span class="frame-text09">
                 483 Commerce Park Dr SE Ste A, Marietta, GA 30060, United States
               </span>
-            </span>
+              <span class="frame-name">Name</span>
+              <img
+                alt="submitline1070"
+                src="{% static 'public/external/submitline1070-gmx4.svg' %}"
+                class="frame-submitline"
+              />
+            </div>
+            <span class="frame-text10">Contact Us</span>
           </div>
           <div class="frame-employeelogin">
             <img
@@ -128,15 +135,15 @@
               src="{% static 'public/external/rectangle14-k29k-200h.png' %}"
               class="frame-rectangle"
             />
-            <a href="{% url 'login' %}" class="frame-text19"><span>Employee Login</span></a>
+            <a href="{% url 'login' %}" class="frame-text11"><span>Employee Login</span></a>
           </div>
           <div class="frame-companyname">
-            <span class="frame-text21">
+            <span class="frame-text13">
               <span>
                 The leading provider of fire alarm and security systems
               </span>
             </span>
-            <span class="frame-text23">
+            <span class="frame-text15">
               <span>Meridian Intelligent Systems</span>
             </span>
           </div>
@@ -149,17 +156,11 @@
               <a href="{% url 'projects' %}" class="app-component-text2"><span>Projects</span></a>
               <a href="{% url 'news_and_ideas' %}" class="app-component-text4"><span>News &amp; Ideas</span></a>
               <a href="{% url 'careers' %}" class="app-component-text6"><span>Careers</span></a>
-                <!-- <span class="app-component-text"><span>About</span></span>
-                <span class="app-component-text2"><span>Projects</span></span>
-                <span class="app-component-text4">
-                  <span>News &amp; Ideas</span>
-                </span>
-                <span class="app-component-text6"><span>Careers</span></span> -->
               </div>
             </div>
           </div>
           <div class="frame-copyright">
-            <span class="frame-text25">
+            <span class="frame-text17">
               @copyright 2023 Meridian Intelligent Systems
             </span>
           </div>

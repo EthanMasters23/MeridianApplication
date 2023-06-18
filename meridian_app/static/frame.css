@@ -93,6 +93,31 @@
     left: 78px;
   }
 }
+@media(max-width: 479px) {
+  .app-component-container {
+    width: 312px;
+    font-size: 10;
+    padding-left: 2px;
+  }
+  .app-component-text {
+    top: 0px;
+    left: 27px;
+    font-size: 10;
+  }
+  .app-component-text2 {
+    top: 0px;
+    right: 42px;
+    font-size: 10;
+  }
+  .app-component-text4 {
+    top: 0px;
+    left: 140px;
+    font-size: 10;
+  }
+  .app-component-text6 {
+    font-size: 10;
+  }
+}
 
 .frame-container {
   width: 100%;
@@ -146,10 +171,10 @@
 }
 .frame-example-image {
   top: 84px;
-  flex: auto;
   width: 100%;
   height: 454px;
-  position: absolute;
+  position: relative;
+  object-fit: cover;
 }
 .frame-contact {
   top: 597px;
@@ -159,12 +184,26 @@
   display: flex;
   overflow: hidden;
   position: absolute;
-  align-items: center;
+  align-items: flex-start;
   flex-shrink: 0;
+  justify-content: center;
+}
+.frame-innercontact {
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  width: 875px;
+  bottom: 0px;
+  height: 519px;
+  margin: auto;
+  display: flex;
+  position: absolute;
+  align-items: flex-start;
+  justify-content: center;
 }
 .frame-contactbox {
-  top: 70px;
-  left: 157px;
+  top: 0px;
+  left: 0px;
   width: 875px;
   height: 519px;
   margin: auto;
@@ -172,9 +211,9 @@
   position: absolute;
   box-sizing: content-box;
 }
-.frame-text {
-  top: 286px;
-  left: 209px;
+.frame-tel {
+  top: 202px;
+  left: 58px;
   color: rgba(255, 255, 255, 0.7099999785423279);
   width: 301px;
   height: auto;
@@ -189,9 +228,9 @@
   font-stretch: normal;
   text-decoration: none;
 }
-.frame-text02 {
-  top: 382px;
-  left: 211px;
+.frame-general {
+  top: 253px;
+  left: 58px;
   color: rgba(255, 255, 255, 0.7099999785423279);
   width: 301px;
   height: auto;
@@ -206,10 +245,10 @@
   font-stretch: normal;
   text-decoration: none;
 }
-.frame-text07 {
-  top: 279px;
-  left: 645px;
+.frame-email-header {
+  top: 209px;
   color: rgba(255, 255, 255, 0.6000000238418579);
+  right: 330px;
   width: 57px;
   height: auto;
   margin: auto;
@@ -223,11 +262,11 @@
   font-stretch: normal;
   text-decoration: none;
 }
-.frame-text09 {
-  top: 400px;
-  left: 645px;
+.frame-phone-header {
   color: rgba(255, 255, 255, 0.6000000238418579);
+  right: 324px;
   width: 63px;
+  bottom: 167px;
   height: auto;
   margin: auto;
   position: absolute;
@@ -240,20 +279,19 @@
   font-stretch: normal;
   text-decoration: none;
 }
-.frame-nametext {
-  top: 163px;
-  left: 644px;
+.frame-email-container {
+  top: 241px;
+  right: 41px;
   width: 347px;
   height: 38px;
-  margin: auto;
+  display: flex;
   position: absolute;
-  border-color: rgba(255, 255, 255, 0.5600000023841858);
-  border-style: solid;
-  border-width: 1px;
+  align-items: center;
+  justify-content: center;
 }
 .frame-emailtext {
-  top: 311px;
-  left: 644px;
+  top: 0px;
+  left: 0px;
   width: 347px;
   height: 38px;
   margin: auto;
@@ -261,11 +299,56 @@
   border-color: rgba(255, 255, 255, 0.5600000023841858);
   border-style: solid;
   border-width: 1px;
+}
+.frame-email-response {
+  left: 0px;
+  color: #ffffff;
+  bottom: 10px;
+  position: absolute;
+  margin-left: 10px;
+}
+.frame-name-container {
+  top: 98px;
+  right: 45px;
+  width: 347px;
+  height: 38px;
+  display: flex;
+  position: absolute;
+  align-items: center;
+  justify-content: center;
+}
+.frame-name-text {
+  left: -1px;
+  width: 347px;
+  bottom: 0px;
+  height: 38px;
+  margin: auto;
+  position: absolute;
+  border-color: rgba(255, 255, 255, 0.5600000023841858);
+  border-style: solid;
+  border-width: 1px;
+}
+.frame-email-response1 {
+  left: 0px;
+  color: #ffffff;
+  bottom: 10px;
+  position: absolute;
+  margin-left: 10px;
+}
+.frame-phone-number-container {
+  right: 40px;
+  width: 346px;
+  bottom: 115px;
+  height: 39px;
+  display: flex;
+  position: absolute;
+  align-items: flex-start;
+  justify-content: center;
 }
 .frame-phonenumbertext {
-  top: 442px;
-  left: 645px;
+  right: 0px;
   width: 347px;
+  bottom: 0px;
   height: 38px;
   margin: auto;
   position: absolute;
@@ -273,11 +356,18 @@
   border-style: solid;
   border-width: 1px;
 }
-.frame-text11 {
-  top: 506px;
-  left: 639px;
+.frame-phoneresponse {
+  top: 11px;
+  left: 10px;
+  color: #ffffff;
+  position: absolute;
+  align-self: center;
+}
+.frame-submit {
   color: rgba(255, 255, 255, 0.6000000238418579);
+  right: 279px;
   width: 114px;
+  bottom: 60px;
   height: auto;
   margin: auto;
   position: absolute;
@@ -290,34 +380,9 @@
   font-stretch: normal;
   text-decoration: none;
 }
-.frame-submitline {
-  top: 538px;
-  left: 645px;
-  width: 101px;
-  height: 1px;
-  margin: auto;
-  position: absolute;
-}
-.frame-text13 {
-  top: 134px;
-  left: 645px;
-  color: rgba(255, 255, 255, 0.6000000238418579);
-  width: 57px;
-  height: auto;
-  margin: auto;
-  position: absolute;
-  font-size: 19px;
-  font-style: Regular;
-  text-align: left;
-  font-family: Arial;
-  font-weight: 400;
-  line-height: normal;
-  font-stretch: normal;
-  text-decoration: none;
-}
-.frame-text15 {
-  top: 132px;
-  left: 211px;
+.frame-text08 {
+  top: 58px;
+  left: 53px;
   color: rgba(255, 255, 255, 0.7099999785423279);
   width: 362px;
   height: auto;
@@ -332,9 +397,9 @@
   font-stretch: normal;
   text-decoration: none;
 }
-.frame-text17 {
-  top: 183px;
-  left: 213px;
+.frame-text09 {
+  top: 114px;
+  left: 56px;
   color: rgba(255, 255, 255, 0.7099999785423279);
   width: 362px;
   height: auto;
@@ -348,6 +413,35 @@
   line-height: normal;
   font-stretch: normal;
   text-decoration: none;
+}
+.frame-name {
+  top: 64px;
+  color: rgba(255, 255, 255, 0.6000000238418579);
+  right: 330px;
+  width: 57px;
+  height: auto;
+  margin: auto;
+  position: absolute;
+  font-size: 19px;
+  font-style: Regular;
+  text-align: left;
+  font-family: Arial;
+  font-weight: 400;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.frame-submitline {
+  right: 286px;
+  width: 101px;
+  bottom: 50px;
+  height: 1px;
+  margin: auto;
+  position: absolute;
+}
+.frame-text10 {
+  color: var(--dl-color-gray-white);
+  font-size: 24;
 }
 .frame-employeelogin {
   top: 387px;
@@ -370,7 +464,7 @@
   position: absolute;
   border-radius: 30px;
 }
-.frame-text19 {
+.frame-text11 {
   top: 52px;
   left: 0px;
   color: rgba(255, 255, 255, 1);
@@ -396,7 +490,7 @@
   position: absolute;
   flex-shrink: 0;
 }
-.frame-text21 {
+.frame-text13 {
   top: 193px;
   left: 0px;
   color: rgba(255, 255, 255, 1);
@@ -413,7 +507,7 @@
   font-stretch: normal;
   text-decoration: none;
 }
-.frame-text23 {
+.frame-text15 {
   top: 95px;
   left: 0px;
   color: rgba(255, 255, 255, 1);
@@ -437,8 +531,9 @@
   display: flex;
   overflow: hidden;
   position: absolute;
-  align-items: flex-start;
+  align-items: center;
   flex-shrink: 0;
+  justify-content: flex-start;
 }
 .frame-container1 {
   top: 30px;
@@ -461,8 +556,8 @@
   align-items: center;
   flex-shrink: 0;
 }
-.frame-text25 {
-  color: rgba(0, 0, 0, 1);
+.frame-text17 {
+  color: rgb(0, 0, 0);
   width: 389px;
   height: auto;
   margin: auto;
@@ -477,27 +572,37 @@
   text-decoration: none;
 }
 @media(max-width: 1600px) {
+  .frame-innercontact {
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    margin: auto;
+  }
+  .frame-name-container {
+    top: 100px;
+    right: 43px;
+  }
   .frame-rectangle {
     left: 0px;
     right: 0px;
     margin: auto;
   }
-  .frame-text19 {
+  .frame-text11 {
     left: 0px;
     right: 0px;
     margin: auto;
   }
-  .frame-text21 {
+  .frame-text13 {
     left: 0px;
     right: 0px;
     margin: auto;
   }
-  .frame-text23 {
+  .frame-text15 {
     left: 0px;
     right: 0px;
     margin: auto;
   }
-  .frame-text25 {
+  .frame-text17 {
     left: 0px;
     right: 0px;
     margin: auto;
@@ -508,7 +613,221 @@
   }
 }
 @media(max-width: 1200px) {
-  .frame-example-image {
-    width: 1066px;
+  .frame-innercontact {
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    margin: auto;
+  }
+  .frame-contactbox {
+    left: 0px;
+    right: 0px;
+    width: 878px;
+    height: 518px;
+    margin: auto;
+  }
+}
+@media(max-width: 991px) {
+  .frame-contactbox {
+    left: 0px;
+    right: 0px;
+    width: 551px;
+    bottom: 0px;
+    height: 441px;
+    margin: auto;
+  }
+  .frame-tel {
+    visibility: hidden;
+  }
+  .frame-general {
+    visibility: hidden;
+  }
+  .frame-email-header {
+    top: 167px;
+    left: 0px;
+  }
+  .frame-phone-header {
+    top: 264px;
+    left: 0px;
+  }
+  .frame-email-container {
+    top: 199px;
+    left: 239px;
+  }
+  .frame-name-container {
+    top: 104px;
+    left: 238px;
+  }
+  .frame-phone-number-container {
+    top: 292px;
+    left: 239px;
+    height: 21px;
+  }
+  .frame-phonenumbertext {
+    left: -1px;
+    bottom: -18px;
+  }
+  .frame-phoneresponse {
+    left: 10px;
+    bottom: -6px;
+  }
+  .frame-submit {
+    left: 0px;
+    bottom: 93px;
+  }
+  .frame-text08 {
+    color: rgba(255, 255, 255, 0.71);
+    font-size: 20px;
+    visibility: hidden;
+    font-family: Arial;
+    font-weight: 400;
+    line-height: normal;
+    text-decoration: none;
+  }
+  .frame-text09 {
+    color: rgba(255, 255, 255, 0.71);
+    font-size: 12px;
+    visibility: hidden;
+    font-family: Arial;
+    font-weight: 400;
+    line-height: normal;
+    text-decoration: none;
+  }
+  .frame-name {
+    top: 75px;
+    left: 0px;
+    position: absolute;
+  }
+  .frame-submitline {
+    left: 10px;
+    bottom: 88px;
+    position: absolute;
+  }
+  .frame-text10 {
+    color: rgba(224, 218, 218, 0.97);
+    margin-top: 60px;
+    text-align: center;
+    line-height: 1.5;
+    text-transform: uppercase;
+    text-decoration: underline;
+  }
+}
+@media(max-width: 767px) {
+  .frame-innercontact {
+    width: 712px;
+  }
+  .frame-text15 {
+    font-size: 50;
+  }
+}
+@media(max-width: 479px) {
+  .frame-innercontact {
+    width: 373px;
+    height: 294px;
+  }
+  .frame-contactbox {
+    width: 372px;
+    height: 295px;
+  }
+  .frame-tel {
+    top: 169px;
+    right: 1px;
+  }
+  .frame-general {
+    left: -45px;
+    bottom: 80px;
+  }
+  .frame-email-header {
+    top: 94px;
+    left: 27px;
+  }
+  .frame-phone-header {
+    top: 171px;
+    left: 29px;
+  }
+  .frame-email-container {
+    top: 102px;
+    left: 6px;
+    width: 230px;
+    height: 31px;
+    margin: 20px;
+  }
+  .frame-emailtext {
+    width: 230px;
+    height: 31px;
+  }
+  .frame-email-response {
+    right: 5px;
+    bottom: 7px;
+  }
+  .frame-name-container {
+    top: 18px;
+    left: 4px;
+    width: 229px;
+    height: 30px;
+    margin: 20px;
+  }
+  .frame-name-text {
+    top: 0px;
+    left: 0px;
+    width: 230px;
+    height: 30px;
+  }
+  .frame-email-response1 {
+    right: 5px;
+    bottom: 7px;
+  }
+  .frame-phone-number-container {
+    top: 193px;
+    left: 23px;
+    width: 234px;
+    height: 32px;
+    position: absolute;
+  }
+  .frame-phonenumbertext {
+    right: -5px;
+    width: 232px;
+    bottom: -5px;
+    height: 35px;
+    margin: auto;
+  }
+  .frame-phoneresponse {
+    top: 11px;
+    right: -2px;
+    font-size: 16;
+    text-align: center;
+  }
+  .frame-submit {
+    left: 48px;
+    bottom: 22px;
+  }
+  .frame-name {
+    top: 19px;
+    left: 27px;
+    color: rgba(255, 255, 255, 0.6);
+    position: absolute;
+    font-size: 12px;
+    font-family: Arial;
+    font-weight: 400;
+    line-height: normal;
+    text-transform: capitalize;
+    text-decoration: none;
+  }
+  .frame-submitline {
+    left: 59px;
+    bottom: 19px;
+  }
+  .frame-text10 {
+    margin-top: 120px;
+  }
+  .frame-text15 {
+    font-size: 35;
+  }
+  .frame-container1 {
+    top: 36px;
+    right: -3px;
+  }
+  .frame-text17 {
+    font-size: 12;
   }
 }
