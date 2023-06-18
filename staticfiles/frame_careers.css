@@ -1,0 +1,145 @@
+.frame-container {
+  width: 100%;
+  display: flex;
+  overflow: auto;
+  min-height: 100vh;
+  align-items: center;
+  flex-direction: column;
+}
+.frame-frame {
+  width: 100%;
+  height: 800px;
+  display: flex;
+  overflow: hidden;
+  position: relative;
+  align-items: flex-start;
+  flex-shrink: 0;
+  background-color: rgba(255, 255, 255, 1);
+}
+.frame-top-rule {
+  top: 70px;
+  left: 0px;
+  width: 100%;
+  height: 904px;
+  position: absolute;
+}
+.frame-image9443b49680ce440fa50b4b8f0f88d1fb1 {
+  top: 47px;
+  width: 100%;
+  height: 549px;
+  position: absolute;
+  object-fit: cover;
+}
+.frame-frame1 {
+  top: 99px;
+  left: 0px;
+  width: 100%;
+  height: 339px;
+  display: flex;
+  position: absolute;
+  align-items: flex-start;
+  flex-shrink: 0;
+}
+.frame-careerbox {
+  top: 74px;
+  left: 0pc;
+  right: 0px;
+  width: 751px;
+  height: 190px;
+  margin: auto;
+  position: absolute;
+}
+.frame-viewcareersbox {
+  top: 180px;
+  left: 0pc;
+  right: 0px;
+  width: 205px;
+  height: 38px;
+  margin: auto;
+  position: absolute;
+  border-radius: 5px;
+}
+.frame-title {
+  top: 94px;
+  left: 0pc;
+  color: rgba(0, 0, 0, 1);
+  right: 0px;
+  width: 166px;
+  height: auto;
+  margin: auto;
+  position: absolute;
+  font-size: 24px;
+  font-style: Regular;
+  text-align: left;
+  font-family: Arial;
+  font-weight: 400;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.frame-subheader {
+  top: 142px;
+  left: 0pc;
+  color: rgba(0, 0, 0, 1);
+  right: 0px;
+  width: 711px;
+  height: auto;
+  margin: auto;
+  position: absolute;
+  font-size: 15px;
+  font-style: Regular;
+  text-align: left;
+  font-family: Arial;
+  font-weight: 400;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.frame-button {
+  top: 190px;
+  left: 0pc;
+  color: rgba(255, 255, 255, 1);
+  right: 0px;
+  width: 165px;
+  height: auto;
+  margin: auto;
+  position: absolute;
+  font-size: 15px;
+  font-style: Regular;
+  text-align: center;
+  font-family: Arial;
+  font-weight: 400;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.frame-learningmorelink {
+  top: 227px;
+  left: 0pc;
+  color: rgba(45, 90, 136, 1);
+  right: 0px;
+  width: 363px;
+  height: auto;
+  margin: auto;
+  position: absolute;
+  font-size: 14px;
+  font-style: Regular;
+  text-align: left;
+  font-family: Arial;
+  font-weight: 400;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+@media(max-width: 479px) {
+  .frame-careerbox {
+    width: 320px;
+    height: 268px;
+  }
+  .frame-subheader {
+    font-size: 10;
+  }
+  .frame-learningmorelink {
+    height: var(--dl-size-size-medium);
+  }
+}
