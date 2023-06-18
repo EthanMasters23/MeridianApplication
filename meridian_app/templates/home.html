@@ -1,0 +1,18 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h2>Welcome, {{ user.username }}!</h2>
+  <form method="post" action="{% url 'clock_in' %}">
+    {% csrf_token %}
+    <button type="submit" {% if status == 'IN' %}disabled{% endif %}>Clock In</button>
+  </form>
+  <form method="post" action="{% url 'meal_break' %}">
+    {% csrf_token %}
+    <button type="submit" {% if status != 'IN' %}disabled{% endif %}>Meal Break</button>
+  </form>
+  <form method="post" action="{% url 'clock_out' %}">
+    {% csrf_token %}
+    <button type="submit" {% if status != 'IN' %}disabled{% endif %}>Clock Out</button>
+  </form>
+  <p><a href="{% url 'logout' %}">Logout</a></p>
+{% endblock %}
