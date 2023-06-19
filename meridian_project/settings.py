@@ -28,16 +28,16 @@ SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
-DEBUG = False
+DEBUG = True
 
 if not DEBUG:
     ALLOWED_HOSTS = ['meridian-website-d6a0f6439541.herokuapp.com']
-else: ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
+else: ALLOWED_HOSTS = []
 
 # Added
 LOGIN_URL = 'login'
 LOGOUT_REDIRECT_URL = 'home'
-LOGIN_REDIRECT_URL = 'home'
+LOGIN_REDIRECT_URL = 'loghours'
 
 # Add these lines if they are not already there
 STATICFILES_DIRS = [
@@ -163,7 +163,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_URL = 'static/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
@@ -196,4 +196,5 @@ LOGGING = {
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-django_on_heroku.settings(locals())
+if not DEBUG:
+    django_on_heroku.settings(locals())

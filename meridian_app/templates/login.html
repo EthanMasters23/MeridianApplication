@@ -1,5 +1,7 @@
 {% extends "base_generic.html" %}
 
+{% load static %}
+
 {% block content %}
 <!DOCTYPE html>
 <html lang="english">
@@ -43,7 +45,7 @@
       <div class="frame-container">
         <div class="frame-frame">
           <img
-            src="public_login/external/atlantabackground5412-k65-1500w.png"
+            src="{% static 'public_login/external/atlantabackground5412-k65-1500w.png' %}"
             alt="AtlantaBackground5412"
             class="frame-atlanta-background"
           />
@@ -51,22 +53,22 @@
             <span class="frame-title">Employee Login</span>
             <div class="frame-container1">
               <img
-                src="public_login/external/userpassbox5411-6fu8-500w.png"
+              src="{% static 'public_login/external/userpassbox5411-6fu8-500w.png' %}"
                 alt="userpassbox5411"
                 class="frame-userpassbox"
               />
               <img
-                src="public_login/external/passbox5411-wzwt-200h.png"
+              src="{% static 'public_login/external/passbox5411-wzwt-200h.png' %}"
                 alt="passbox5411"
                 class="frame-passbox"
               />
               <img
-                src="public_login/external/userbox5411-h84b-200h.png"
+              src="{% static 'public_login/external/userbox5411-h84b-200h.png' %}"
                 alt="userbox5411"
                 class="frame-userbox"
               />
               <img
-                src="public_login/external/loginbox5411-e83-200h.png"
+              src="{% static 'public_login/external/loginbox5411-e83-200h.png' %}"
                 alt="loginbox5411"
                 class="frame-loginbox"
               />
@@ -75,18 +77,30 @@
               <form method="post">
                 {% csrf_token %}
                 <div class="frame-text">
-                  <label for="username">username</label>
+                  <label for="username"></label>
                   {{ form.username }}
                 </div>
                 <div class="frame-text5">
-                  <label for="password">password</label>
+                  <label for="password"></label>
                   {{ form.password }}
                 </div>
                 <div class="frame-login">
                   <button type="submit">Login</button>
                 </div>
               </form>
-              <p>If you don't have an account, <a href="{% url 'register' %}">Register Here</a>.</p>
+              <style>
+                .register-link {
+                  color: blue; /* Set the color to blue */
+                  text-decoration: underline; /* Add underline to the link */
+                  z-index: 1;
+                  position: absolute;
+                  bottom: 12px;
+                  left: 50%;
+                  transform: translateX(-50%);
+                }
+              </style>
+                <a class="register-link" href="{% url 'register' %}">Register Here</a>
+              </div>
             </div>
           </div>
         </div>

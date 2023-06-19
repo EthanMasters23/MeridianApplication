@@ -1,19 +1,20 @@
+<!-- {% load static %} -->
+<!DOCTYPE html>
 <html>
 <head>
   <title>Meridian App</title>
-  <link rel="stylesheet" href="/static/style.css">
+  {% block extra_css %}{% endblock %}
+    <!-- Add your meta tags, title, and CSS links here -->
 </head>
 <body>
-  <header>
-    <h1>Meridian App</h1>
-    {% if user.is_authenticated %}
-        <a href="{% url 'user_info' %}">User Information</a>
-        <a href="{% url 'logout' %}">Logout</a>
+    <!-- {% if user.is_authenticated %}
+        <a href="{% url 'loghours' %}">Log Hours</a>
+    {% else %}
+        <a href="{% url 'home' %}"></a>
     {% endif %}
-  </header>
-
-  <main>
-    {% block content %}{% endblock %}
-  </main>
+    Add your other HTML elements here -->
 </body>
+<main>
+  {% block content %}{% endblock %}
+</main>
 </html>

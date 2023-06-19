@@ -1,18 +1,206 @@
 {% extends "base_generic.html" %}
 
+{% load static %}
+
 {% block content %}
-  <h2>Welcome, {{ user.username }}!</h2>
-  <form method="post" action="{% url 'clock_in' %}">
-    {% csrf_token %}
-    <button type="submit" {% if status == 'IN' %}disabled{% endif %}>Clock In</button>
-  </form>
-  <form method="post" action="{% url 'meal_break' %}">
-    {% csrf_token %}
-    <button type="submit" {% if status != 'IN' %}disabled{% endif %}>Meal Break</button>
-  </form>
-  <form method="post" action="{% url 'clock_out' %}">
-    {% csrf_token %}
-    <button type="submit" {% if status != 'IN' %}disabled{% endif %}>Clock Out</button>
-  </form>
-  <p><a href="{% url 'logout' %}">Logout</a></p>
+
+<!DOCTYPE html>
+<html lang="english">
+  <head>
+    <title>Meridian</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8" />
+    <meta property="twitter:card" content="summary_large_image" />
+
+    <style data-tag="reset-style-sheet">
+      html {  line-height: 1.15;}body {  margin: 0;}* {  box-sizing: border-box;  border-width: 0;  border-style: solid;}p,li,ul,pre,div,h1,h2,h3,h4,h5,h6,figure,blockquote,figcaption {  margin: 0;  padding: 0;}button {  background-color: transparent;}button,input,optgroup,select,textarea {  font-family: inherit;  font-size: 100%;  line-height: 1.15;  margin: 0;}button,select {  text-transform: none;}button,[type="button"],[type="reset"],[type="submit"] {  -webkit-appearance: button;}button::-moz-focus-inner,[type="button"]::-moz-focus-inner,[type="reset"]::-moz-focus-inner,[type="submit"]::-moz-focus-inner {  border-style: none;  padding: 0;}button:-moz-focus,[type="button"]:-moz-focus,[type="reset"]:-moz-focus,[type="submit"]:-moz-focus {  outline: 1px dotted ButtonText;}a {  color: inherit;  text-decoration: inherit;}input {  padding: 2px 4px;}img {  display: block;}html { scroll-behavior: smooth  }
+    </style>
+    <style data-tag="default-style-sheet">
+      html {
+        font-family: Inter;
+        font-size: 16px;
+      }
+
+      body {
+        font-weight: 400;
+        font-style:normal;
+        text-decoration: none;
+        text-transform: none;
+        letter-spacing: normal;
+        line-height: 1.15;
+        color: var(--dl-color-gray-black);
+        background-color: var(--dl-color-gray-white);
+
+      }
+    </style>
+    <link rel="stylesheet" href="{% static 'style.css' %}" />
+    <link rel="stylesheet" href="{% static 'frame.css' %}" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;display=swap"
+      data-tag="font"
+    />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div>
+      <link href="./static/frame.css" rel="stylesheet" />
+
+      <div class="frame-container">
+        <div class="frame-frame">
+          <div class="frame-body">
+            <img
+              alt="BottomFill1053"
+              src="{% static 'public/external/bottomfill1053-sm32-200h.png' %}"
+              class="frame-bottom-fill"
+            />
+            <img
+              alt="BottomRule1055"
+              src="{% static 'public/external/bottomrule1055-nlcn.svg' %}"
+              class="frame-bottom-rule"
+            />
+            <img
+              alt="TopRule1054"
+              src="{% static 'public/external/toprule1054-z7yn-1500w.png' %}"
+              class="frame-top-rule"
+            />
+            <img
+              alt="ExampleImage13"
+              src="{% static 'public/external/exampleimage13-4ik-1500w.png' %}"
+              class="frame-example-image"
+            />
+          </div>
+          <div class="frame-contact">
+            <div class="frame-innercontact">
+              <img
+                alt="contactbox525"
+                src="{% static 'public/external/contactbox525-nbu-600h.png' %}"
+                class="frame-contactbox"
+              />
+              <span class="frame-tel"><span>TEL +1 404-591-1211</span></span>
+              <span class="frame-general">
+                <span>
+                  <span>General Inquiries:</span>
+                  <br />
+                  <span>keir.masters@meridianatl.com</span>
+                </span>
+              </span>
+              <!-- here -->
+              <span class="frame-email-header"><span>Email</span></span>
+              <span class="frame-phone-header"><span>Phone</span></span>
+              <!-- <div class="frame-email-container">
+                <img
+                  alt="emailtext1068"
+                  src="{% static 'public/external/emailtext1068-45g-400w.png' %}"
+                  class="frame-emailtext"
+                />
+                <span class="frame-email-response">
+                  ethansmasters@outlook.com
+                </span>
+              </div>
+              <div class="frame-name-container">
+                <img
+                  alt="emailtext1068"
+                  src="{% static 'public/external/emailtext1068-45g-400w.png' %}"
+                  class="frame-name-text"
+                />
+                <span class="frame-email-response1">
+                  ethansmasters@outlook.com
+                </span>
+              </div>
+              <div class="frame-phone-number-container">
+                <img
+                  alt="phonenumbertext1069"
+                  src="{% static 'public/external/phonenumbertext1069-trpg-400w.png' %}"
+                  class="frame-phonenumbertext"
+                />
+                <span class="frame-phoneresponse">
+                  ethansmasters@outlook.com
+                </span>
+              </div> -->
+              <!-- to here i believe -->
+              <form method="post" action="{% url 'contact' %}">
+                {% csrf_token %}
+                <div class="frame-email-container">
+                    <img
+                        alt="emailtext1068"
+                        src="{% static 'public/external/emailtext1068-45g-400w.png' %}"
+                        class="frame-emailtext"
+                    />
+                    <input type="text" name="email" class="frame-email-response" placeholder="Enter your email">
+                </div>
+                <div class="frame-name-container">
+                    <img
+                        alt="emailtext1068"
+                        src="{% static 'public/external/emailtext1068-45g-400w.png' %}"
+                        class="frame-name-text"
+                    />
+                    <input type="text" name="name" class="frame-email-response1" placeholder="Enter your name">
+                </div>
+                <div class="frame-phone-number-container">
+                    <img
+                        alt="phonenumbertext1069"
+                        src="{% static 'public/external/phonenumbertext1069-trpg-400w.png' %}"
+                        class="frame-phonenumbertext"
+                    />
+                    <input type="text" name="phone_number" class="frame-phoneresponse" placeholder="Enter your phone number">
+                </div>
+                <button type="submit" class="frame-submit"><span>Submit</span></button>
+            </form>
+              <!--  giving a shot-->
+              <!-- <span class="frame-submit"><span>Submit</span></span> -->
+              <span class="frame-text08">Meridian Intelligent Systems</span>
+              <span class="frame-text09">
+                483 Commerce Park Dr SE Ste A, Marietta, GA 30060, United States
+              </span>
+              <span class="frame-name">Name</span>
+              <img
+                alt="submitline1070"
+                src="{% static 'public/external/submitline1070-gmx4.svg' %}"
+                class="frame-submitline"
+              />
+            </div>
+            <span class="frame-text10">Contact Us</span>
+          </div>
+          <div class="frame-employeelogin">
+            <img
+              alt="Rectangle14"
+              src="{% static 'public/external/rectangle14-k29k-200h.png' %}"
+              class="frame-rectangle"
+            />
+            <a href="{% url 'login' %}" class="frame-text11"><span>Employee Login</span></a>
+          </div>
+          <div class="frame-companyname">
+            <span class="frame-text13">
+              <span>
+                The leading provider of fire alarm and security systems
+              </span>
+            </span>
+            <span class="frame-text15">
+              <span>Meridian Intelligent Systems</span>
+            </span>
+          </div>
+          <div class="frame-dropdown">
+            <div class="frame-container1">
+              <div
+                class="app-component-container app-component-root-class-name"
+              >
+              <a href="{% url 'about' %}" class="app-component-text"><span>About</span></a>
+              <a href="{% url 'projects' %}" class="app-component-text2"><span>Projects</span></a>
+              <a href="{% url 'news_and_ideas' %}" class="app-component-text4"><span>News &amp; Ideas</span></a>
+              <a href="{% url 'careers' %}" class="app-component-text6"><span>Careers</span></a>
+              </div>
+            </div>
+          </div>
+          <div class="frame-copyright">
+            <span class="frame-text17">
+              @copyright 2023 Meridian Intelligent Systems
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+
 {% endblock %}

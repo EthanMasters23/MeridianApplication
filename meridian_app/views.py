@@ -12,19 +12,21 @@ from django.utils import timezone
 from datetime import datetime
 from django.http import HttpResponse
 from django.core.mail import send_mail
-from .models import ContactForm
-# Create your views here.
+from django.views.decorators.csrf import csrf_exempt
+from django import forms
+from django.contrib.auth.forms import AuthenticationForm
 
-# test #
-
-class TestHomePageView(View):
-    # @method_decorator(login_required)
-    def get(self, request):
-        return render(request, 'index.html')
-
-# test #
 
 class HomePageView(View):
+    def get(self, request):
+        return render(request, 'home.html')
+
+class CustomAuthenticationForm(AuthenticationForm):
+    username = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Enter your username'}))
+    password = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder': 'Enter your password'}))
+
+
+class LogHoursView(View):
     @method_decorator(login_required)
     def get(self, request):
         try:
@@ -32,12 +34,16 @@ class HomePageView(View):
             status = clock_in.status
         except ObjectDoesNotExist:
             status = 'OUT'
-        return render(request, 'home.html', {'status': status})
+        return render(request, 'loghours.html', {'status': status})
 
-class EmployeeLoginView(LoginView):
-    def get(self, request):
-        return render(request, 'login.html')
+# class EmployeeLoginView(LoginView):
+#     def get(self, request):
+#         return render(request, 'login.html')
     
+class EmployeeLoginView(LoginView):
+    form_class = CustomAuthenticationForm
+    template_name = 'login.html'
+
 class ClockInView(View):
     @method_decorator(login_required)
     def post(self, request):
@@ -49,11 +55,12 @@ class ClockInView(View):
                 clock_in.status = 'IN'
                 clock_in.time = timezone.now()
                 clock_in.save()
+                messages.success(request, 'You have successfully clocked in.')
         except ObjectDoesNotExist:
             clock_in = ClockIn(employee=request.user, status='IN', time=timezone.now())
             clock_in.save()
             messages.info(request, 'First Clock-In')
-        return redirect('home')
+        return render(request, 'loghours.html')
 
 class MealBreakView(View):
     @method_decorator(login_required)
@@ -65,9 +72,10 @@ class MealBreakView(View):
             else:
                 clock_in.status = 'BREAK'
                 clock_in.save()
-            return redirect('home')
+                messages.success(request, 'You are now on break.')
         except ObjectDoesNotExist:
-            messages.info(request, 'You are not clocked in.')
+            messages.error(request, 'You are not clocked in.')
+        return render(request, 'loghours.html')
 
 class ClockOutView(View):
     @method_decorator(login_required)
@@ -83,6 +91,7 @@ class ClockOutView(View):
                 clock_in.job_notes = request.POST.get('job_notes', '')
                 clock_in.job_costs = request.POST.get('job_costs', '')
                 clock_in.save()
+                messages.success(request, 'You have successfully clocked out.')
 
                 # Fetch all ClockIn instances for the current day
                 today_min = datetime.combine(date.today(), time.min)
@@ -92,6 +101,7 @@ class ClockOutView(View):
                 return render(request, 'clock_out.html', {'clock_ins': todays_clock_ins})
         except DatabaseError:
             messages.error(request, 'You are not clocked in.')
+            return render(request, 'loghours.html')
 
 
 class RegisterView(View):
@@ -122,25 +132,26 @@ class UserInfoView(View):
         return render(request, 'user_info.html', {'form': form})
 
 
-def send_email(request):
+@csrf_exempt
+def contact(request):
     if request.method == 'POST':
-        name = request.POST['name']
-        email = request.POST['email']
-        message = request.POST['message']
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        phone_number = request.POST.get('phone_number')
+        message = request.POST.get('message')
 
         send_mail(
             'Contact form submission from ' + name,
-            message,
+            'Phone number: ' + phone_number + '\nMessage:\n' + message,
             email,
             ['your-email@example.com'],  # Replace with your email
             fail_silently=True,
         )
 
-        # Save the form data in the database
-        form = ContactForm(name=name, email=email, message=message)
-        form.save()
-
         return HttpResponse('Email sent')
+    else:
+        return HttpResponse('Method not allowed', status=405)
+
 
 def about(request):
     return render(request, 'about.html')

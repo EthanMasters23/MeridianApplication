@@ -831,3 +831,22 @@
     font-size: 12;
   }
 }
+
+
+/* Additions */
+
+.frame-email-response,
+.frame-email-response1,
+.frame-phoneresponse {
+  width: 100%;
+  font-size: 16px;
+  outline: none;
+  background-color: transparent;
+  border: none;
+}
+
+.frame-email-response::placeholder,
+.frame-email-response1::placeholder,
+.frame-phoneresponse::placeholder {
+  color: #888888;
+}

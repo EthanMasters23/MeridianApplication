@@ -16,6 +16,7 @@ Python Version: Python 3.9.13 (main, Aug 25 2022, 18:29:29)
 
 from django.db import models
 from django.contrib.auth.models import User
+from django import forms
 
 class ClockIn(models.Model):
     STATUS_CHOICES = [
@@ -36,7 +37,7 @@ class ClockIn(models.Model):
         return f"Clock In: {self.time}, Clock Out: {self.clock_out_time}, Meal Break: {self.meal_break_time}"
 
 
-class ContactForm(models.Model):
-    name = models.CharField(max_length=255)
+class Contact(models.Model):
+    name = models.CharField(max_length=100)
     email = models.EmailField()
-    message = models.TextField()
+    phone_number = models.CharField(max_length=15)

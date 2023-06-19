@@ -16,20 +16,27 @@ Including another URLconf
 """
 from django.urls import include, path
 from django.contrib import admin
-from django.contrib.auth import views as auth_views
-from meridian_app.views import HomePageView, RegisterView, TestHomePageView, about, projects, news_and_ideas, careers
+
 
 urlpatterns = [
-    path('', TestHomePageView.as_view(), name='index'),
-    # path('', HomePageView.as_view(), name='home'),
-    path('about/', about, name='about'),
-    path('projects/', projects, name='projects'),
-    path('news_and_ideas/', news_and_ideas, name='news_and_ideas'),
-    path('careers/', careers, name='careers'),
-    path('login/', auth_views.LoginView.as_view(template_name='login.html'), name='login'),
-    path('logout/', auth_views.LogoutView.as_view(), name='logout'),
-    path('register/', RegisterView.as_view(), name='register'),
     path('admin/', admin.site.urls),
-    path('meridian_app/', include('meridian_app.urls')),
+    path('', include('meridian_app.urls')),
 ]
+
+# old
+# from django.contrib.auth import views as auth_views
+# from meridian_app.views import HomePageView, RegisterView, TestHomePageView, about, projects, news_and_ideas, careers
+# urlpatterns = [
+#     path('', TestHomePageView.as_view(), name='index'),
+#     # path('', HomePageView.as_view(), name='home'),
+#     path('about/', about, name='about'),
+#     path('projects/', projects, name='projects'),
+#     path('news_and_ideas/', news_and_ideas, name='news_and_ideas'),
+#     path('careers/', careers, name='careers'),
+#     path('login/', auth_views.LoginView.as_view(template_name='login.html'), name='login'),
+#     path('logout/', auth_views.LogoutView.as_view(), name='logout'),
+#     path('register/', RegisterView.as_view(), name='register'),
+#     path('admin/', admin.site.urls),
+#     path('meridian_app/', include('meridian_app.urls')),
+# ]
 
