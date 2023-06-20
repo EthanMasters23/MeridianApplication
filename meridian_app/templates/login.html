@@ -162,22 +162,15 @@
             </div>
           </div>
           <div class="about-page-post-details">
-            <a
-              href="https://example.com"
-              target="_blank"
-              rel="noreferrer noopener"
-              class="about-page-link"
-            >
-              Register Here
-            </a>
-            <span class="about-page-text">Meridian</span>
+            <a class="about-page-link" href="{% url 'register' %}">Register Here</a>
+            <a  href="{% url 'home' %}" class="about-page-text">Meridian</a>
             <h1 class="about-page-text1">Employee Login</h1>
             <button class="about-page-button button">Login</button>
           </div>
         </div>
       </div>
     </div>
-    <script src="https://unpkg.com/@teleporthq/teleport-custom-scripts"></script>
+    <!-- <script src="https://unpkg.com/@teleporthq/teleport-custom-scripts"></script> -->
   </body>
 </html>
 {% endblock %}

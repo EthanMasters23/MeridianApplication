@@ -188,3 +188,6 @@ def careers(request):
 
 def profile(request):
     return render(request, 'profile.html')
+
+def LoginIn(request):
+    return render(request, 'login.html')

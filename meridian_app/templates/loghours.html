@@ -159,6 +159,40 @@
             </div>
           </div>
           <div class="loghours-post-details">
+            {% if messages %}
+              <ul class="messages">
+                {% for message in messages %}
+                  <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                {% endfor %}
+              </ul>
+            {% endif %}
+          
+            <form method="post" action="{% url 'clock_in' %}">
+              {% csrf_token %}
+              <button class="loghours-button button" {% if status == 'IN' %}disabled{% endif %}>Clock-In</button>
+            </form>
+          
+            <span class="loghours-text">Meridian</span>
+            <h1 class="loghours-text1">Employee Hours</h1>
+          
+            <form method="post" action="{% url 'meal_break' %}">
+              {% csrf_token %}
+              <button class="loghours-button1 button" {% if status != 'IN' %}disabled{% endif %}>Meal-Break</button>
+            </form>
+          
+            <form method="post" action="{% url 'clock_out' %}">
+              {% csrf_token %}
+              <button class="loghours-button2 button" {% if status != 'IN' %}disabled{% endif %}>
+                <span>
+                  <span class="loghours-text3">Clock-Out</span>
+                  <br />
+                </span>
+              </button>
+            </form>
+          </div>
+          
+          <p><a href="{% url 'login' %}">Logout</a></p>
+          <!-- <div class="loghours-post-details">
             <button class="loghours-button button">Clock-In</button>
             <span class="loghours-text">Meridian</span>
             <h1 class="loghours-text1">Employee Hours</h1>
@@ -169,7 +203,7 @@
                 <br />
               </span>
             </button>
-          </div>
+          </div> -->
         </div>
       </div>
     </div>

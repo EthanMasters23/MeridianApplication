@@ -160,11 +160,59 @@
             </div>
           </div>
           <h1 class="employee-login-heading">
-            Miami Beah is looking different at night!
+            Employee Login
           </h1>
           <div class="employee-login-bg"></div>
         </div>
-        <div class="employee-login-post-details">
+        <style>
+          .error-message {
+            color: red;
+            text-align: center;
+            top: 30px;
+          }
+          </style>
+        <form method="post">
+          {% csrf_token %}
+          <div class="employee-login-post-details">
+            <label class="employee-login-text" for="{{ form.username.id_for_label }}">Username:</label>
+            <input
+            type="text"
+            placeholder="placeholder"
+            class="employee-login-textinput input"
+          />
+            {{ form.username|add:'class:employee-login-textinput input' }}
+            <label class="employee-login-text1" for="{{ form.password.id_for_label }}">Password:</label>
+            <input
+            type="text"
+            placeholder="placeholder"
+            class="employee-login-textinput1 input"
+          />
+            {{ form.password|add:'class:employee-login-textinput1 input' }}
+            <button type="submit" class="employee-login-button button">
+              <span class="employee-login-text2">
+                <span>LOGIN</span>
+                <br />
+              </span>
+            </button>
+            <a class="employee-login-link" href="{% url 'register' %}">Register Here</a>
+          </div>
+          {% if form.errors %}
+            <div class="error-message">
+              {% for field in form %}
+                {% for error in field.errors %}
+                  <p>{{ field.label }}: {{ error }}</p>
+                {% endfor %}
+              {% endfor %}
+            </div>
+          {% endif %}
+          {% if messages %}
+            {% for message in messages %}
+              <div class="error-message">{{ message }}</div>
+            {% endfor %}
+          {% endif %}
+        </form>
+        <!-- replace above -->
+        <!-- <div class="employee-login-post-details">
           <span class="employee-login-text">Username:</span>
           <input
             type="text"
@@ -183,25 +231,19 @@
               <br />
             </span>
           </button>
-          <a
-            href="https://example.com"
-            target="_blank"
-            rel="noreferrer noopener"
-            class="employee-login-link"
-          >
-            Register Here
-          </a>
-        </div>
+          <a class="employee-login-link" href="{% url 'register' %}">Register Here</a>
+        </div> -->
+
         <div class="employee-login-posts">
           <div class="employee-login-container1">
-            <h3 class="employee-login-text5 Healine">
+            <!-- <h3 class="employee-login-text5 Healine">
               <span class="employee-login-text6">Before I go&nbsp;</span>
-            </h3>
-            <span class="employee-login-text7 TextXL">
+            </h3> -->
+            <!-- <span class="employee-login-text7 TextXL">
               We've got time, but we are only doing what they say and want. I do
               not want to live as I will never die, cause life's too short, and
               I do not want to drown myself, as others would like.
-            </span>
+            </span> -->
           </div>
           <div class="article-card-container">
             <img
@@ -275,17 +317,17 @@
             <div class="footer-container2">
               <div class="footer-container3">
                 <span class="footer-text TextXS">USEFUL LINK</span>
-                <span class="footer-text01 TextSM">About Us</span>
-                <span class="footer-text02 TextSM">Projects</span>
-                <span class="footer-text03 TextSM">Careers</span>
-                <span class="footer-text04 TextSM">News</span>
+                <a class="footer-text01 TextSM" href="{% url 'login' %}">About Us</a>
+                <a class="footer-text02 TextSM" href="{% url 'login' %}">Projects</a>
+                <a class="footer-text03 TextSM" href="{% url 'login' %}">Careers</a>
+                <a class="footer-text04 TextSM" href="{% url 'login' %}">News</a>
               </div>
               <div class="footer-container4">
                 <span class="footer-text05 TextXS">OTHER RESOURCES</span>
-                <span class="footer-text06 TextSM">License</span>
-                <span class="footer-text07 TextSM">Terms &amp; Conditions</span>
-                <span class="footer-text08 TextSM">Privacy Policy</span>
-                <span class="footer-text09 TextSM">Contact Us</span>
+                <a class="footer-text06 TextSM" href="{% url 'login' %}">License</a>
+                <a class="footer-text07 TextSM" href="{% url 'login' %}">Terms &amp; Conditions</a>
+                <a class="footer-text08 TextSM" href="{% url 'login' %}">Privacy Policy</a>
+                <a class="footer-text09 TextSM" href="{% url 'login' %}">Contact Us</a>
               </div>
             </div>
           </div>
