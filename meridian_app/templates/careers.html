@@ -1,19 +1,15 @@
-{% extends "base_generic.html" %}
+{% extends 'base_generic.html' %}
+
 
 {% load static %}
 
-
-{% block extra_css %}
-  <link rel="stylesheet" href="{% static 'style_careers.css' %}">
-  <link rel="stylesheet" href="{% static 'frame_careers.css' %}">
-{% endblock %}
-
-
 {% block content %}
+
 <!DOCTYPE html>
-<html lang="english">
+<html lang="en">
   <head>
-    <title>exported project</title>
+    <title>Careers - Notus Pro</title>
+    <meta property="og:title" content="Careers - Notus Pro" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta charset="utf-8" />
     <meta property="twitter:card" content="summary_large_image" />
@@ -23,73 +19,82 @@
     </style>
     <style data-tag="default-style-sheet">
       html {
-        font-family: Inter;
-        font-size: 16px;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen","Ubuntu", "Cantarell", "Fira Sans","Droid Sans", "Helvetica Neue", sans-serif;
+        font-size: 1.12rem;
       }
 
       body {
-        font-weight: 400;
+        font-weight: 300;
         font-style:normal;
         text-decoration: none;
         text-transform: none;
         letter-spacing: normal;
-        line-height: 1.15;
-        color: var(--dl-color-gray-black);
+        line-height: 1.75;
+        color: var(--dl-color-gray-900);
         background-color: var(--dl-color-gray-white);
 
       }
     </style>
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;display=swap"
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&amp;display=swap"
       data-tag="font"
     />
-    <!-- <link rel="stylesheet" href="./style_careers.css" /> -->
+    <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
     <div>
-      <!-- <link href="./frame_careers.css" rel="stylesheet" /> -->
+      <link href="./careers.css" rel="stylesheet" />
 
-      <div class="frame-container">
-        <div class="frame-frame">
+      <div class="careers-container">
+        <div class="careers-hero">
           <img
-          src="{% static 'public_careers/external/toprule5310-ecum-1000h.png' %}"
-            alt="TopRule5310"
-            class="frame-top-rule"
+            alt="image"
+            src="https://images.unsplash.com/photo-1529859503572-5b9d1e68e952?ixid=Mnw5MTMyMXwwfDF8c2VhcmNofDN8fG1pbmltYWxpc20lMjBjb3VjaHxlbnwwfHx8fDE2MjYxODI1OTE&amp;ixlib=rb-1.2.1&amp;w=1500"
+            class="careers-image"
           />
-          <img
-          src="{% static 'public_careers/external/image9443b49680ce440fa50b4b8f0f88d1fb15310-lnmd-1500w.png' %}"
-            alt="IMAGE9443b49680ce440fa50b4b8f0f88d1fb15310"
-            class="frame-image9443b49680ce440fa50b4b8f0f88d1fb1"
-          />
-          <div class="frame-frame1">
-            <img
-            src="{% static 'public_careers/external/rectangle5398-rb25-300h.png' %}"
-              alt="Rectangle5398"
-              class="frame-careerbox"
-            />
-            <img
-            src="{% static 'public_careers/external/rectangle5399-bwuh-200h.png' %}"
-              alt="Rectangle5399"
-              class="frame-viewcareersbox"
-            />
-            <span class="frame-title"><span>Join Our Team</span></span>
-            <span class="frame-subheader">
+          <div class="careers-container1">
+            <h1 class="careers-text">Let’s keep things organised</h1>
+            <h2 class="careers-text01">Magnificent things are very simple.</h2>
+            <div class="careers-btn-group">
+              <button class="careers-button button">Get Started</button>
+              <button class="careers-button1 button">Learn More</button>
+            </div>
+            <span class="careers-text02">
               <span>
-                We're always looking for talented individuals to join our team.
-                Check out our current openings below:
+                <span>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
+                  non volutpat turpis.
+                </span>
+                <span></span>
               </span>
-            </span>
-            <span class="frame-button"><span>View Current Openings</span></span>
-            <span class="frame-learningmorelink">
               <span>
-                Learn More About Working at Meridian Intelligent Systems
+                <span>
+                  Mauris luctus rutrum mi ut rhoncus. Integer in dignissim
+                  tortor. Lorem
+                </span>
+                <span></span>
+              </span>
+              <span>
+                <span>ipsum dolor sit amet, consectetur adipiscing elit.</span>
+                <span></span>
+              </span>
+              <br />
+              <span></span>
+              <br />
+              <span>
+                <span>
+                  Mauris luctus rutrum mi ut rhoncus. Integer in dignissim
+                  tortor.
+                </span>
+                <span></span>
               </span>
             </span>
           </div>
         </div>
       </div>
     </div>
+    <script src="https://unpkg.com/@teleporthq/teleport-custom-scripts"></script>
   </body>
 </html>
 {% endblock %}

@@ -31,6 +31,7 @@ from .views import (
     MealBreakView,
     ClockOutView,
     contact,
+    profile
 )
 
 # app_name = 'meridian_app'
@@ -38,12 +39,13 @@ from .views import (
 urlpatterns = [
     path('', HomePageView.as_view(), name='home'),
     path('contact/', contact, name='contact'),
-    path('login/', EmployeeLoginView.as_view(), name='login'),
-    path('login/loghours/', LogHoursView.as_view(), name='loghours'),
-    path('about/', about, name='about'),
+    path('profile/', profile, name='profile'),
+    path('employee-login/', EmployeeLoginView.as_view(), name='employee-login'),
+    path('careers/', careers, name='careers'),
+    path('employee-login/loghours/', LogHoursView.as_view(), name='loghours'),
+    path('about-page/', about, name='about-page'),
     path('projects/', projects, name='projects'),
     path('news_and_ideas/', news_and_ideas, name='news_and_ideas'),
-    path('careers/', careers, name='careers'),
     path('register/', RegisterView.as_view(), name='register'),
     path('user_info/', UserInfoView.as_view(), name='user_info'),
     path('clock_in/', ClockInView.as_view(), name='clock_in'),

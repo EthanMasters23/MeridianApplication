@@ -1,13 +1,14 @@
-{% extends "base_generic.html" %}
+{% extends 'base_generic.html' %}
+
 
 {% load static %}
 
 {% block content %}
-
 <!DOCTYPE html>
-<html lang="english">
+<html lang="en">
   <head>
-    <title>Meridian</title>
+    <title>Notus Pro</title>
+    <meta property="og:title" content="Notus Pro" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta charset="utf-8" />
     <meta property="twitter:card" content="summary_large_image" />
@@ -17,190 +18,361 @@
     </style>
     <style data-tag="default-style-sheet">
       html {
-        font-family: Inter;
-        font-size: 16px;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen","Ubuntu", "Cantarell", "Fira Sans","Droid Sans", "Helvetica Neue", sans-serif;
+        font-size: 1.12rem;
       }
 
       body {
-        font-weight: 400;
+        font-weight: 300;
         font-style:normal;
         text-decoration: none;
         text-transform: none;
         letter-spacing: normal;
-        line-height: 1.15;
-        color: var(--dl-color-gray-black);
+        line-height: 1.75;
+        color: var(--dl-color-gray-900);
         background-color: var(--dl-color-gray-white);
 
       }
     </style>
-    <link rel="stylesheet" href="{% static 'style.css' %}" />
-    <link rel="stylesheet" href="{% static 'frame.css' %}" />
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;display=swap"
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&amp;display=swap"
       data-tag="font"
     />
-    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="{% static 'style.css' %}" />
   </head>
   <body>
     <div>
-      <link href="./static/frame.css" rel="stylesheet" />
+      <link rel="stylesheet" href="{% static 'home.css' %}" />
 
-      <div class="frame-container">
-        <div class="frame-frame">
-          <div class="frame-body">
-            <img
-              alt="BottomFill1053"
-              src="{% static 'public/external/bottomfill1053-sm32-200h.png' %}"
-              class="frame-bottom-fill"
-            />
-            <img
-              alt="BottomRule1055"
-              src="{% static 'public/external/bottomrule1055-nlcn.svg' %}"
-              class="frame-bottom-rule"
-            />
-            <img
-              alt="TopRule1054"
-              src="{% static 'public/external/toprule1054-z7yn-1500w.png' %}"
-              class="frame-top-rule"
-            />
-            <img
-              alt="ExampleImage13"
-              src="{% static 'public/external/exampleimage13-4ik-1500w.png' %}"
-              class="frame-example-image"
-            />
-          </div>
-          <div class="frame-contact">
-            <div class="frame-innercontact">
-              <img
-                alt="contactbox525"
-                src="{% static 'public/external/contactbox525-nbu-600h.png' %}"
-                class="frame-contactbox"
-              />
-              <span class="frame-tel"><span>TEL +1 404-591-1211</span></span>
-              <span class="frame-general">
-                <span>
-                  <span>General Inquiries:</span>
-                  <br />
-                  <span>keir.masters@meridianatl.com</span>
-                </span>
-              </span>
-              <!-- here -->
-              <span class="frame-email-header"><span>Email</span></span>
-              <span class="frame-phone-header"><span>Phone</span></span>
-              <!-- <div class="frame-email-container">
-                <img
-                  alt="emailtext1068"
-                  src="{% static 'public/external/emailtext1068-45g-400w.png' %}"
-                  class="frame-emailtext"
-                />
-                <span class="frame-email-response">
-                  ethansmasters@outlook.com
-                </span>
-              </div>
-              <div class="frame-name-container">
-                <img
-                  alt="emailtext1068"
-                  src="{% static 'public/external/emailtext1068-45g-400w.png' %}"
-                  class="frame-name-text"
-                />
-                <span class="frame-email-response1">
-                  ethansmasters@outlook.com
-                </span>
-              </div>
-              <div class="frame-phone-number-container">
-                <img
-                  alt="phonenumbertext1069"
-                  src="{% static 'public/external/phonenumbertext1069-trpg-400w.png' %}"
-                  class="frame-phonenumbertext"
-                />
-                <span class="frame-phoneresponse">
-                  ethansmasters@outlook.com
-                </span>
-              </div> -->
-              <!-- to here i believe -->
-              <form method="post" action="{% url 'contact' %}">
-                {% csrf_token %}
-                <div class="frame-email-container">
-                    <img
-                        alt="emailtext1068"
-                        src="{% static 'public/external/emailtext1068-45g-400w.png' %}"
-                        class="frame-emailtext"
-                    />
-                    <input type="text" name="email" class="frame-email-response" placeholder="Enter your email">
+      <div class="home-container">
+        <div class="home-hero">
+          <div data-role="Header" class="header-header header-root-class-name1">
+            <div class="header-container">
+                <a  href="{% url 'home' %}" class="header-navlink"></a>
+                <h1 class="header-meridian TextSM"><span>MERIDIAN</span></h1>
+              </a>
+              <a  href="{% url 'profile' %}" class="header-navlink1">
+                <div class="header-profile">
+                  <svg viewBox="0 0 1024 1024" class="header-icon">
+                    <path
+                      d="M576 706.612v-52.78c70.498-39.728 128-138.772 128-237.832 0-159.058 0-288-192-288s-192 128.942-192 288c0 99.060 57.502 198.104 128 237.832v52.78c-217.102 17.748-384 124.42-384 253.388h896c0-128.968-166.898-235.64-384-253.388z"
+                    ></path>
+                  </svg>
+                  <span class="header-text TextSM">PROFILE</span>
                 </div>
-                <div class="frame-name-container">
-                    <img
-                        alt="emailtext1068"
-                        src="{% static 'public/external/emailtext1068-45g-400w.png' %}"
-                        class="frame-name-text"
-                    />
-                    <input type="text" name="name" class="frame-email-response1" placeholder="Enter your name">
+              </a>
+                <a  href="{% url 'careers' %}" class="header-navlink2"></a>
+                <div class="header-contact-us">
+                  <svg viewBox="0 0 1024 1024" class="header-icon02">
+                    <path
+                      d="M917.806 229.076c-22.212-30.292-53.174-65.7-87.178-99.704s-69.412-64.964-99.704-87.178c-51.574-37.82-76.592-42.194-90.924-42.194h-496c-44.112 0-80 35.888-80 80v864c0 44.112 35.888 80 80 80h736c44.112 0 80-35.888 80-80v-624c0-14.332-4.372-39.35-42.194-90.924zM785.374 174.626c30.7 30.7 54.8 58.398 72.58 81.374h-153.954v-153.946c22.984 17.78 50.678 41.878 81.374 72.572zM896 944c0 8.672-7.328 16-16 16h-736c-8.672 0-16-7.328-16-16v-864c0-8.672 7.328-16 16-16 0 0 495.956-0.002 496 0v224c0 17.672 14.326 32 32 32h224v624z"
+                    ></path>
+                    <path
+                      d="M736 832h-448c-17.672 0-32-14.326-32-32s14.328-32 32-32h448c17.674 0 32 14.326 32 32s-14.326 32-32 32z"
+                    ></path>
+                    <path
+                      d="M736 704h-448c-17.672 0-32-14.326-32-32s14.328-32 32-32h448c17.674 0 32 14.326 32 32s-14.326 32-32 32z"
+                    ></path>
+                    <path
+                      d="M736 576h-448c-17.672 0-32-14.326-32-32s14.328-32 32-32h448c17.674 0 32 14.326 32 32s-14.326 32-32 32z"
+                    ></path>
+                  </svg>
+                  <span class="header-text1">CONTACT US</span>
                 </div>
-                <div class="frame-phone-number-container">
-                    <img
-                        alt="phonenumbertext1069"
-                        src="{% static 'public/external/phonenumbertext1069-trpg-400w.png' %}"
-                        class="frame-phonenumbertext"
-                    />
-                    <input type="text" name="phone_number" class="frame-phoneresponse" placeholder="Enter your phone number">
-                </div>
-                <button type="submit" class="frame-submit"><span>Submit</span></button>
-            </form>
-              <!--  giving a shot-->
-              <!-- <span class="frame-submit"><span>Submit</span></span> -->
-              <span class="frame-text08">Meridian Intelligent Systems</span>
-              <span class="frame-text09">
-                483 Commerce Park Dr SE Ste A, Marietta, GA 30060, United States
-              </span>
-              <span class="frame-name">Name</span>
-              <img
-                alt="submitline1070"
-                src="{% static 'public/external/submitline1070-gmx4.svg' %}"
-                class="frame-submitline"
-              />
+              </a>
             </div>
-            <span class="frame-text10">Contact Us</span>
+            <div data-role="BurgerMenu" class="header-burger-menu">
+              <svg viewBox="0 0 1024 1024" class="header-icon07">
+                <path
+                  d="M128 256h768v86h-768v-86zM128 554v-84h768v84h-768zM128 768v-86h768v86h-768z"
+                ></path>
+              </svg>
+            </div>
+            <div class="header-container1">
+              <a href="{% url 'employee-login' %}">
+              <button type="button" class="header-button button">
+                <span>LOGIN</span>
+              </button>
+            </a>
+            </div>
+            <div data-role="MobileMenu" class="header-mobile-menu">
+              <div class="header-top">
+                <a href="{% url 'home' %}" class="header-navlink3">
+                  <h1 class="header-heading TextSM"><span>MERIDIAN</span></h1>
+                </a>
+                <div data-role="CloseMobileMenu" class="header-close-menu">
+                  <svg viewBox="0 0 1024 1024" class="header-icon09">
+                    <path
+                      d="M810 274l-238 238 238 238-60 60-238-238-238 238-60-60 238-238-238-238 60-60 238 238 238-238z"
+                    ></path>
+                  </svg>
+                </div>
+              </div>
+              <div class="header-mid">
+                <a href="{% url 'profile' %}" class="header-navlink4">
+                  <div class="header-container2">
+                    <svg viewBox="0 0 1024 1024" class="header-icon11">
+                      <path
+                        d="M576 706.612v-52.78c70.498-39.728 128-138.772 128-237.832 0-159.058 0-288-192-288s-192 128.942-192 288c0 99.060 57.502 198.104 128 237.832v52.78c-217.102 17.748-384 124.42-384 253.388h896c0-128.968-166.898-235.64-384-253.388z"
+                      ></path>
+                    </svg>
+                    <span class="header-text2 TextSM">PROFILE</span>
+                  </div>
+                </a>
+                <a href="{% url 'employee-login' %}" class="header-navlink5">
+                  <div class="header-container3">
+                    <svg viewBox="0 0 1024 1024" class="header-icon13">
+                      <path
+                        d="M917.806 229.076c-22.212-30.292-53.174-65.7-87.178-99.704s-69.412-64.964-99.704-87.178c-51.574-37.82-76.592-42.194-90.924-42.194h-496c-44.112 0-80 35.888-80 80v864c0 44.112 35.888 80 80 80h736c44.112 0 80-35.888 80-80v-624c0-14.332-4.372-39.35-42.194-90.924zM785.374 174.626c30.7 30.7 54.8 58.398 72.58 81.374h-153.954v-153.946c22.984 17.78 50.678 41.878 81.374 72.572zM896 944c0 8.672-7.328 16-16 16h-736c-8.672 0-16-7.328-16-16v-864c0-8.672 7.328-16 16-16 0 0 495.956-0.002 496 0v224c0 17.672 14.326 32 32 32h224v624z"
+                      ></path>
+                      <path
+                        d="M736 832h-448c-17.672 0-32-14.326-32-32s14.328-32 32-32h448c17.674 0 32 14.326 32 32s-14.326 32-32 32z"
+                      ></path>
+                      <path
+                        d="M736 704h-448c-17.672 0-32-14.326-32-32s14.328-32 32-32h448c17.674 0 32 14.326 32 32s-14.326 32-32 32z"
+                      ></path>
+                      <path
+                        d="M736 576h-448c-17.672 0-32-14.326-32-32s14.328-32 32-32h448c17.674 0 32 14.326 32 32s-14.326 32-32 32z"
+                      ></path>
+                    </svg>
+                    <span class="header-text3 TextSM">BLOG</span>
+                  </div>
+                </a>
+              </div>
+              <div class="header-bot">
+                <svg viewBox="0 0 877.7142857142857 1024" class="header-icon18">
+                  <path
+                    d="M713.143 73.143c90.857 0 164.571 73.714 164.571 164.571v548.571c0 90.857-73.714 164.571-164.571 164.571h-107.429v-340h113.714l17.143-132.571h-130.857v-84.571c0-38.286 10.286-64 65.714-64l69.714-0.571v-118.286c-12-1.714-53.714-5.143-101.714-5.143-101.143 0-170.857 61.714-170.857 174.857v97.714h-114.286v132.571h114.286v340h-304c-90.857 0-164.571-73.714-164.571-164.571v-548.571c0-90.857 73.714-164.571 164.571-164.571h548.571z"
+                  ></path></svg>
+                <svg viewBox="0 0 1024 1024" class="header-icon20">
+                  <path
+                    d="M1024 226.4c-37.6 16.8-78.2 28-120.6 33 43.4-26 76.6-67.2 92.4-116.2-40.6 24-85.6 41.6-133.4 51-38.4-40.8-93-66.2-153.4-66.2-116 0-210 94-210 210 0 16.4 1.8 32.4 5.4 47.8-174.6-8.8-329.4-92.4-433-219.6-18 31-28.4 67.2-28.4 105.6 0 72.8 37 137.2 93.4 174.8-34.4-1-66.8-10.6-95.2-26.2 0 0.8 0 1.8 0 2.6 0 101.8 72.4 186.8 168.6 206-17.6 4.8-36.2 7.4-55.4 7.4-13.6 0-26.6-1.4-39.6-3.8 26.8 83.4 104.4 144.2 196.2 146-72 56.4-162.4 90-261 90-17 0-33.6-1-50.2-3 93.2 59.8 203.6 94.4 322.2 94.4 386.4 0 597.8-320.2 597.8-597.8 0-9.2-0.2-18.2-0.6-27.2 41-29.4 76.6-66.4 104.8-108.6z"
+                  ></path></svg>
+                <svg
+                  viewBox="0 0 877.7142857142857 1024"
+                  class="header-icon22"
+                >
+                  <path
+                    d="M438.857 73.143c242.286 0 438.857 196.571 438.857 438.857 0 193.714-125.714 358.286-300 416.571-22.286 4-30.286-9.714-30.286-21.143 0-14.286 0.571-61.714 0.571-120.571 0-41.143-13.714-67.429-29.714-81.143 97.714-10.857 200.571-48 200.571-216.571 0-48-17.143-86.857-45.143-117.714 4.571-11.429 19.429-56-4.571-116.571-36.571-11.429-120.571 45.143-120.571 45.143-34.857-9.714-72.571-14.857-109.714-14.857s-74.857 5.143-109.714 14.857c0 0-84-56.571-120.571-45.143-24 60.571-9.143 105.143-4.571 116.571-28 30.857-45.143 69.714-45.143 117.714 0 168 102.286 205.714 200 216.571-12.571 11.429-24 30.857-28 58.857-25.143 11.429-89.143 30.857-127.429-36.571-24-41.714-67.429-45.143-67.429-45.143-42.857-0.571-2.857 26.857-2.857 26.857 28.571 13.143 48.571 64 48.571 64 25.714 78.286 148 52 148 52 0 36.571 0.571 70.857 0.571 81.714 0 11.429-8 25.143-30.286 21.143-174.286-58.286-300-222.857-300-416.571 0-242.286 196.571-438.857 438.857-438.857zM166.286 703.429c1.143-2.286-0.571-5.143-4-6.857-3.429-1.143-6.286-0.571-7.429 1.143-1.143 2.286 0.571 5.143 4 6.857 2.857 1.714 6.286 1.143 7.429-1.143zM184 722.857c2.286-1.714 1.714-5.714-1.143-9.143-2.857-2.857-6.857-4-9.143-1.714-2.286 1.714-1.714 5.714 1.143 9.143 2.857 2.857 6.857 4 9.143 1.714zM201.143 748.571c2.857-2.286 2.857-6.857 0-10.857-2.286-4-6.857-5.714-9.714-3.429-2.857 1.714-2.857 6.286 0 10.286s7.429 5.714 9.714 4zM225.143 772.571c2.286-2.286 1.143-7.429-2.286-10.857-4-4-9.143-4.571-11.429-1.714-2.857 2.286-1.714 7.429 2.286 10.857 4 4 9.143 4.571 11.429 1.714zM257.714 786.857c1.143-3.429-2.286-7.429-7.429-9.143-4.571-1.143-9.714 0.571-10.857 4s2.286 7.429 7.429 8.571c4.571 1.714 9.714 0 10.857-3.429zM293.714 789.714c0-4-4.571-6.857-9.714-6.286-5.143 0-9.143 2.857-9.143 6.286 0 4 4 6.857 9.714 6.286 5.143 0 9.143-2.857 9.143-6.286zM326.857 784c-0.571-3.429-5.143-5.714-10.286-5.143-5.143 1.143-8.571 4.571-8 8.571 0.571 3.429 5.143 5.714 10.286 4.571s8.571-4.571 8-8z"
+                  ></path>
+                </svg>
+              </div>
+            </div>
           </div>
-          <div class="frame-employeelogin">
-            <img
-              alt="Rectangle14"
-              src="{% static 'public/external/rectangle14-k29k-200h.png' %}"
-              class="frame-rectangle"
-            />
-            <a href="{% url 'login' %}" class="frame-text11"><span>Employee Login</span></a>
-          </div>
-          <div class="frame-companyname">
-            <span class="frame-text13">
-              <span>
+          <div class="home-bg"></div>
+          <div class="home-container01">
+            <div class="home-container02">
+              <h1 class="home-text">Meridian Intelligent Systems</h1>
+              <span class="home-text01">
                 The leading provider of fire alarm and security systems
               </span>
-            </span>
-            <span class="frame-text15">
-              <span>Meridian Intelligent Systems</span>
-            </span>
+            </div>
           </div>
-          <div class="frame-dropdown">
-            <div class="frame-container1">
-              <div
-                class="app-component-container app-component-root-class-name"
-              >
-              <a href="{% url 'about' %}" class="app-component-text"><span>About</span></a>
-              <a href="{% url 'projects' %}" class="app-component-text2"><span>Projects</span></a>
-              <a href="{% url 'news_and_ideas' %}" class="app-component-text4"><span>News &amp; Ideas</span></a>
-              <a href="{% url 'careers' %}" class="app-component-text6"><span>Careers</span></a>
+        </div>
+        <div class="home-section3">
+          <div class="home-container03">
+            <div class="home-services">
+              <div class="service-card-container">
+                <div class="service-card-container1">
+                  <svg viewBox="0 0 1024 1024" class="service-card-icon">
+                    <path
+                      d="M512 86q124 0 211 87t87 211q0 150-128 244v98q0 18-12 30t-30 12h-256q-18 0-30-12t-12-30v-98q-128-88-128-244 0-124 87-211t211-87zM384 896v-42h256v42q0 18-12 30t-30 12h-172q-18 0-30-12t-12-30z"
+                    ></path>
+                  </svg>
+                </div>
+                <h1 class="service-card-text TextXL">
+                  <span>Excelent services</span>
+                </h1>
+                <span class="service-card-text1">
+                  <span>
+                    Some quick example text to build on the card title and make
+                    up the bulk of the card's content.
+                  </span>
+                </span>
+              </div>
+              <div class="home-container04">
+                <div class="home-container05">
+                  <svg viewBox="0 0 1024 1024" class="home-icon">
+                    <path
+                      d="M832 192v-128h-640v128h-192v128c0 106.038 85.958 192 192 192 20.076 0 39.43-3.086 57.62-8.802 46.174 66.008 116.608 113.796 198.38 130.396v198.406h-64c-70.694 0-128 57.306-128 128h512c0-70.694-57.306-128-128-128h-64v-198.406c81.772-16.6 152.206-64.386 198.38-130.396 18.19 5.716 37.544 8.802 57.62 8.802 106.042 0 192-85.962 192-192v-128h-192zM192 436c-63.962 0-116-52.038-116-116v-64h116v64c0 40.186 7.43 78.632 20.954 114.068-6.802 1.246-13.798 1.932-20.954 1.932zM948 320c0 63.962-52.038 116-116 116-7.156 0-14.152-0.686-20.954-1.932 13.524-35.436 20.954-73.882 20.954-114.068v-64h116v64z"
+                    ></path>
+                  </svg>
+                </div>
+                <h1 class="home-text02 TextXL">Grow your market</h1>
+                <span class="home-text03">
+                  Some quick example text to build on the card title and make up
+                  the bulk of the card's content.
+                </span>
+              </div>
+              <div class="home-container06">
+                <div class="home-container07">
+                  <svg viewBox="0 0 1024 1024" class="home-icon02">
+                    <path
+                      d="M726 726v-172h-86v172h86zM554 726v-428h-84v428h84zM384 726v-300h-86v300h86zM810 128q34 0 60 26t26 60v596q0 34-26 60t-60 26h-596q-34 0-60-26t-26-60v-596q0-34 26-60t60-26h596z"
+                    ></path>
+                  </svg>
+                </div>
+                <h1 class="home-text04 TextXL">24/7 Monitoring</h1>
+                <span class="home-text05">
+                  Reliable Security Around the Clock: Our 24/7 Monitoring
+                  Ensures Your Business is Always Protected. &nbsp; &nbsp;
+                  &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
+                </span>
+              </div>
+            </div>
+            <div class="home-contact">
+              <h2 class="home-text06">Contact Us</h2>
+              <span class="home-text07 TextXL">
+                Fill out the form below to recieve a quote or to hear more about
+                our services
+              </span>
+              <div class="home-form">
+                <h1 class="home-text08">Job Inquiries</h1>
+              <form method="post" action="{% url 'contact' %}">
+                {% csrf_token %}
+                <span class="home-text09 TextXS">FULL NAME</span>
+                <input type="text" name="name" class="home-textinput TextSM input" placeholder="Enter your name">
+                <span class="home-text10 TextXS">EMAIL</span>
+                <input type="text" name="email" class="home-textinput1 TextSM input" placeholder="Enter your email">
+                <span class="home-text11 TextXS">MESSAGE</span>
+                <textarea name="message" cols="80" rows="4" placeholder="Type a message" class="home-textarea TextSM textarea"></textarea>
+                <div class="home-container08">
+                    <div class="secondary-button-container secondary-button-root-class-name">
+                        <button type="submit" class="secondary-button-button TextXS button">
+                            <span>Send message</span>
+                        </button>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-          <div class="frame-copyright">
-            <span class="frame-text17">
-              @copyright 2023 Meridian Intelligent Systems
-            </span>
+          <!-- <img alt="image" src="public/white-vector.svg" class="home-image" /> -->
+        </div>
+        <div class="home-section1">
+          <div class="home-container09">
+            <div class="home-container10">
+              <h3 class="home-text12">Powering Your Commercial Vision</h3>
+              <span class="home-text13">
+                Building Excellence for Commercial Success: Your Trusted Partner
+                in Construction Solutions.
+              </span>
+            </div>
+            <div class="home-cards-container">
+              <div class="home-card1">
+                <div class="home-container11">
+                  <svg viewBox="0 0 1024 1024" class="home-icon04">
+                    <path
+                      d="M639.403 658.091l32 241.152-137.429-82.475c-13.269-7.851-29.995-8.363-43.904 0l-137.429 82.475 32.043-241.109c39.296 15.829 82.304 24.533 127.317 24.533s88.021-8.747 127.403-24.576zM654.165 554.283c-2.475 1.28-4.821 2.773-6.955 4.48-39.253 24.448-85.547 38.571-135.211 38.571-70.699 0-134.656-28.587-181.035-74.965s-74.965-110.336-74.965-181.035 28.587-134.656 74.965-181.035 110.336-74.965 181.035-74.965 134.656 28.587 181.035 74.965 74.965 110.336 74.965 181.035-28.587 134.656-74.965 181.035c-11.861 11.861-24.875 22.571-38.869 31.915zM304.64 612.48l-48.256 363.221c-3.115 23.339 13.312 44.8 36.693 47.915 9.984 1.323 19.669-0.939 27.563-5.717l191.36-114.816 191.403 114.816c20.224 12.117 46.421 5.589 58.539-14.635 5.205-8.661 6.955-18.389 5.717-27.563l-48.213-363.307c11.947-9.173 23.296-19.115 33.92-29.739 61.696-61.696 99.968-147.072 99.968-241.323s-38.272-179.627-99.968-241.365-147.115-99.968-241.365-99.968-179.627 38.272-241.365 99.968-99.968 147.115-99.968 241.365 38.272 179.627 99.968 241.365c10.667 10.667 22.016 20.608 33.963 29.781z"
+                    ></path>
+                  </svg>
+                </div>
+                <h6 class="home-text14 TextXL">Quality Service</h6>
+                <span class="home-text15">
+                  Uncompromising Commitment to Quality: Our Experts Delivers
+                  Reliable Solutions and Exceptional Service
+                </span>
+              </div>
+              <div class="home-card2">
+                <div class="home-container12">
+                  <svg viewBox="0 0 1097.142857142857 1024" class="home-icon06">
+                    <path
+                      d="M731.429 859.429c0 9.714-8.571 18.286-18.286 18.286h-548.571c-21.143 0-18.286-22.286-18.286-36.571v-329.143h-109.714c-20 0-36.571-16.571-36.571-36.571 0-8.571 2.857-17.143 8.571-23.429l182.857-219.429c6.857-8 17.143-12.571 28-12.571s21.143 4.571 28 12.571l182.857 219.429c5.714 6.286 8.571 14.857 8.571 23.429 0 20-16.571 36.571-36.571 36.571h-109.714v219.429h329.143c5.143 0 10.857 2.286 14.286 6.286l91.429 109.714c2.286 3.429 4 8 4 12zM1097.143 621.714c0 8.571-2.857 17.143-8.571 23.429l-182.857 219.429c-6.857 8-17.143 13.143-28 13.143s-21.143-5.143-28-13.143l-182.857-219.429c-5.714-6.286-8.571-14.857-8.571-23.429 0-20 16.571-36.571 36.571-36.571h109.714v-219.429h-329.143c-5.143 0-10.857-2.286-14.286-6.857l-91.429-109.714c-2.286-2.857-4-7.429-4-11.429 0-9.714 8.571-18.286 18.286-18.286h548.571c21.143 0 18.286 22.286 18.286 36.571v329.143h109.714c20 0 36.571 16.571 36.571 36.571z"
+                    ></path>
+                  </svg>
+                </div>
+                <h6 class="home-text16 TextXL">24/7 Monitoring</h6>
+                <span class="home-text17">
+                  <span class="home-text18">
+                    Reliable Security Around the Clock: Our 24/7 Monitoring
+                    Ensures Your Business is Always Protected. &nbsp; &nbsp;
+                    &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
+                  </span>
+                  <br class="home-text19" />
+                </span>
+              </div>
+              <div class="home-card3">
+                <div class="home-container13">
+                  <svg viewBox="0 0 1024 1024" class="home-icon08">
+                    <path
+                      d="M636 938h-6q-92-24-158-90-38-38-65-103t-27-119q0-52 38-89t92-37 93 37 39 89q0 34 25 58t63 24 64-24 26-58q0-120-91-206t-219-86q-92 0-168 47t-114 125q-24 50-24 120 0 80 28 154 6 20-14 26t-26-12q-32-82-32-168 0-78 30-138 42-90 129-144t191-54q146 0 249 99t103 237q0 52-39 88t-93 36-92-36-38-88q0-34-26-59t-64-25-63 25-25 59q0 112 80 192 56 56 140 78 18 2 14 26-4 16-20 16zM530 626q0 74 55 128t137 54q4 0 18-2t23-2 18 3 11 13q4 22-18 26-24 4-52 4-80 0-132-38-102-70-102-186 0-22 22-22 20 0 20 22zM416 930q-8 0-14-6-54-54-86-114-46-80-46-184 0-94 71-162t171-68 171 68 71 162q0 20-22 20t-22-20q0-78-58-133t-140-55-140 55-58 133q0 96 38 164 26 46 80 104 16 14 0 30-6 6-16 6zM150 414q-22 0-22-20 0-4 4-12 64-92 160-140 100-52 220-52t220 52q98 48 160 138 4 8 4 12 0 14-16 20t-24-8q-60-82-144-124-92-46-200-47t-200 47q-90 46-146 126-6 8-16 8zM760 190q-8 0-10-2-118-60-238-60-130 0-238 60-10 6-20 0t-10-18q0-14 10-20 116-64 258-64 130 0 258 64 18 10 8 28-8 12-18 12z"
+                    ></path>
+                  </svg>
+                </div>
+                <h6 class="home-text20 TextXL">Verified Company</h6>
+                <span class="home-text21">
+                  Write a few lines about each one. A paragraph describing a
+                  feature will be enough. Keep you user engaged!
+                </span>
+              </div>
+            </div>
+            <div class="home-work-with-us">
+              <div class="home-container14">
+                <div class="home-container15">
+                  <svg viewBox="0 0 1024 1024" class="home-icon10">
+                    <path
+                      d="M384 554q64 0 140 18t139 60 63 94v128h-684v-128q0-52 63-94t139-60 140-18zM640 512q-26 0-56-10 56-66 56-160 0-38-16-86t-40-76q30-10 56-10 70 0 120 51t50 121-50 120-120 50zM214 342q0-70 50-121t120-51 120 51 50 121-50 120-120 50-120-50-50-120zM712 560q106 16 188 59t82 107v128h-172v-128q0-98-98-166z"
+                    ></path>
+                  </svg>
+                </div>
+                <h3 class="home-text22 Healine">Join our team!</h3>
+                <span class="home-text23">
+                  Join us and contribute your skills to exciting projects,
+                  collaborate with industry experts, and make a meaningful
+                  impact in the commercial construction sector. Explore our
+                  current openings and become a valued member of our dedicated
+                  team.
+                </span>
+                <span class="home-text24">Career Opportunities&nbsp;</span>
+              </div>
+              <div class="home-container16">
+                <div class="home-container17"></div>
+                <div class="home-container18">
+                  <h4 class="home-text25 Healine">
+                    <span class="home-text26">Top Notch Services</span>
+                    <br />
+                  </h4>
+                  <span class="home-text27">
+                    <span>
+                      The Arctic Ocean freezes every winter and much of the
+                      sea-ice then thaws every summer, and that process will
+                      continue whatever happens.
+                    </span>
+                    <br />
+                  </span>
+                </div>
+              </div>
+            </div>
           </div>
+        </div>
+        <div class="home-container19"></div>
+        <div class="footer-container">
+          <div class="footer-container1">
+            <div class="footer-container2">
+              <div class="footer-container3">
+                <span class="footer-text TextXS">USEFUL LINK</span>
+                <a  href="{% url 'employee-login' %}" class="footer-text01 TextSM">About Us</a>
+                <a  href="{% url 'employee-login' %}" class="footer-text02 TextSM">Projects</a>
+                <a  href="{% url 'employee-login' %}" class="footer-text03 TextSM">Careers</a>
+                <a  href="{% url 'employee-login' %}" class="footer-text04 TextSM">News</a>
+              </div>
+              <div class="footer-container4">
+                <span class="footer-text05 TextXS">OTHER RESOURCES</span>
+                <a  href="{% url 'employee-login' %}" class="footer-text06 TextSM">License</a>
+                <a  href="{% url 'employee-login' %}" class="footer-text07 TextSM">Conditions</a>
+                <a  href="{% url 'employee-login' %}" class="footer-text08 TextSM">Privacy Policy</a>
+                <a  href="{% url 'employee-login' %}" class="footer-text09 TextSM">Contact US</a>
+              </div>
+            </div>
+          </div>
+          <div class="footer-container5"></div>
+          <span class="footer-text10 TextSM">
+            Copyright © 2013 Meridian-IS LLC, all rights reserved
+          </span>
         </div>
       </div>
     </div>
+    <script src="https://unpkg.com/@teleporthq/teleport-custom-scripts"></script>
   </body>
 </html>
-
 {% endblock %}

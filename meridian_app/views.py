@@ -41,10 +41,10 @@ class LogHoursView(View):
     #         return HttpResponse('Invalid form submission')
     
 class EmployeeLoginView(LoginView):
-    template_name = 'login.html'
+    template_name = 'employee-login.html'
 
     def get_success_url(self):
-        return '/login/loghours/'  # Specify the URL to redirect to upon successful login
+        return '/employee-login/loghours/'  # Specify the URL to redirect to upon successful login
 
     def form_invalid(self, form):
         messages.error(self.request, 'Invalid username or password')
@@ -159,12 +159,11 @@ def contact(request):
     if request.method == 'POST':
         name = request.POST.get('name')
         email = request.POST.get('email')
-        phone_number = request.POST.get('phone_number')
         message = request.POST.get('message')
 
         send_mail(
             'Contact form submission from ' + name,
-            'Phone number: ' + phone_number + '\nMessage:\n' + message,
+            'Message:\n' + message,
             email,
             ['ethansmasters@outlook.com'],  # Replace with your email
             fail_silently=True,
@@ -186,3 +185,6 @@ def news_and_ideas(request):
 
 def careers(request):
     return render(request, 'careers.html')
+
+def profile(request):
+    return render(request, 'profile.html')
