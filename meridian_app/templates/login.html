@@ -76,6 +76,15 @@
               <span class="frame-poass"><span>Password:</span></span>
               <form method="post">
                 {% csrf_token %}
+                {% if form.errors %}
+                <div class="error-message">
+                  {% for field in form %}
+                  {% for error in field.errors %}
+                  {{ field.label }}: {{ error }}
+                  {% endfor %}
+                  {% endfor %}
+                </div>
+                {% endif %}
                 <div class="frame-text">
                   <label for="username"></label>
                   {{ form.username }}
@@ -87,6 +96,11 @@
                 <div class="frame-login">
                   <button type="submit">Login</button>
                 </div>
+                {% if messages %}
+                  {% for message in messages %}
+                    <div class="error-message">{{ message }}</div>
+                  {% endfor %}
+                {% endif %}
               </form>
               <style>
                 .register-link {

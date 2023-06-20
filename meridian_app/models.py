@@ -27,6 +27,7 @@ class ClockIn(models.Model):
     employee = models.ForeignKey(User, on_delete=models.CASCADE)
     time = models.DateTimeField(auto_now_add=True)
     clock_out_time = models.DateTimeField(null=True, blank=True)
+    meal_break_time = models.DateTimeField(null=True, blank=True)  # New field for meal break start time
     duration = models.DurationField(null=True, blank=True)
     status = models.CharField(max_length=5, choices=STATUS_CHOICES, default='OUT')
     location = models.CharField(max_length=255, blank=True)

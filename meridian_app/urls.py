@@ -17,15 +17,29 @@ Including another URLconf
 
 from django.urls import path
 from django.contrib.auth import views as auth_views
-from .views import HomePageView, EmployeeLoginView, LogHoursView, about, projects, news_and_ideas, careers, RegisterView, UserInfoView, ClockInView, MealBreakView, ClockOutView, contact
+from .views import (
+    HomePageView,
+    EmployeeLoginView,
+    LogHoursView,
+    about,
+    projects,
+    news_and_ideas,
+    careers,
+    RegisterView,
+    UserInfoView,
+    ClockInView,
+    MealBreakView,
+    ClockOutView,
+    contact,
+)
 
 # app_name = 'meridian_app'
 
 urlpatterns = [
     path('', HomePageView.as_view(), name='home'),
-    path('', contact, name='contact'),
+    path('contact/', contact, name='contact'),
     path('login/', EmployeeLoginView.as_view(), name='login'),
-    path('loghours/', LogHoursView.as_view(), name='loghours'),
+    path('login/loghours/', LogHoursView.as_view(), name='loghours'),
     path('about/', about, name='about'),
     path('projects/', projects, name='projects'),
     path('news_and_ideas/', news_and_ideas, name='news_and_ideas'),
@@ -36,6 +50,7 @@ urlpatterns = [
     path('meal_break/', MealBreakView.as_view(), name='meal_break'),
     path('clock_out/', ClockOutView.as_view(), name='clock_out'),
 ]
+
 
 
 # old

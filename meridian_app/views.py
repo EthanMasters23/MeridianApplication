@@ -9,23 +9,17 @@ from .forms import CustomUserCreationForm
 from django.db import DatabaseError
 from django.core.exceptions import ObjectDoesNotExist
 from django.utils import timezone
-from datetime import datetime
 from django.http import HttpResponse
 from django.core.mail import send_mail
 from django.views.decorators.csrf import csrf_exempt
-from django import forms
-from django.contrib.auth.forms import AuthenticationForm
+from datetime import datetime, date, time
+from django.http import HttpResponseRedirect
 
 
 class HomePageView(View):
     def get(self, request):
         return render(request, 'home.html')
-
-class CustomAuthenticationForm(AuthenticationForm):
-    username = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Enter your username'}))
-    password = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder': 'Enter your password'}))
-
-
+    
 class LogHoursView(View):
     @method_decorator(login_required)
     def get(self, request):
@@ -35,14 +29,26 @@ class LogHoursView(View):
         except ObjectDoesNotExist:
             status = 'OUT'
         return render(request, 'loghours.html', {'status': status})
-
-# class EmployeeLoginView(LoginView):
-#     def get(self, request):
-#         return render(request, 'login.html')
+    # @method_decorator(login_required)
+    # def post(self, request):
+    #     if 'clock_in' in request.POST:
+    #         return redirect('clock_in')
+    #     elif 'meal_break' in request.POST:
+    #         return redirect('meal_break')
+    #     elif 'clock_out' in request.POST:
+    #         return redirect('clock_out')
+    #     else:
+    #         return HttpResponse('Invalid form submission')
     
 class EmployeeLoginView(LoginView):
-    form_class = CustomAuthenticationForm
     template_name = 'login.html'
+
+    def get_success_url(self):
+        return '/login/loghours/'  # Specify the URL to redirect to upon successful login
+
+    def form_invalid(self, form):
+        messages.error(self.request, 'Invalid username or password')
+        return super().form_invalid(form)
 
 class ClockInView(View):
     @method_decorator(login_required)
@@ -50,7 +56,7 @@ class ClockInView(View):
         try:
             clock_in = ClockIn.objects.filter(employee=request.user).latest('time')
             if clock_in.status == 'IN':
-                messages.error(request, 'You are already clocked in, please clock-out before logging more hours.')
+                messages.error(request, 'You are already clocked in, please clock out before logging more hours.')
             else:
                 clock_in.status = 'IN'
                 clock_in.time = timezone.now()
@@ -60,7 +66,8 @@ class ClockInView(View):
             clock_in = ClockIn(employee=request.user, status='IN', time=timezone.now())
             clock_in.save()
             messages.info(request, 'First Clock-In')
-        return render(request, 'loghours.html')
+        return redirect('loghours')
+
 
 class MealBreakView(View):
     @method_decorator(login_required)
@@ -71,12 +78,14 @@ class MealBreakView(View):
                 messages.error(request, 'You are not clocked in.')
             else:
                 clock_in.status = 'BREAK'
+                clock_in.meal_break_time = timezone.now()
                 clock_in.save()
-                messages.success(request, 'You are now on break.')
+                messages.success(request, 'You are now on a meal break.')
         except ObjectDoesNotExist:
             messages.error(request, 'You are not clocked in.')
-        return render(request, 'loghours.html')
+        return redirect('loghours')
 
+    
 class ClockOutView(View):
     @method_decorator(login_required)
     def post(self, request):
@@ -85,23 +94,35 @@ class ClockOutView(View):
             if clock_in.status != 'IN':
                 messages.error(request, 'You are not clocked in.')
             else:
-                clock_in.status = 'OUT'
-                clock_in.clock_out_time = timezone.now()  # Use timezone-aware datetime
-                clock_in.duration = clock_in.clock_out_time - clock_in.time
-                clock_in.job_notes = request.POST.get('job_notes', '')
-                clock_in.job_costs = request.POST.get('job_costs', '')
-                clock_in.save()
-                messages.success(request, 'You have successfully clocked out.')
+                if clock_in.status == 'BREAK':
+                    messages.error(request, 'You cannot clock out while on a meal break.')
+                else:
+                    clock_in.status = 'OUT'
+                    clock_in.clock_out_time = timezone.now()
+                    if clock_in.status == 'BREAK':
+                        # Handle the case where there was a meal break
+                        meal_break = clock_in.meal_break_time
+                        if meal_break is not None:
+                            duration_without_break = meal_break - clock_in.time
+                            duration_with_break = clock_in.clock_out_time - clock_in.time
+                            clock_in.duration = duration_without_break + duration_with_break
+                    else:
+                        clock_in.duration = clock_in.clock_out_time - clock_in.time
+                    clock_in.job_notes = request.POST.get('job_notes', '')
+                    clock_in.job_costs = request.POST.get('job_costs', '')
+                    clock_in.save()
+                    messages.success(request, 'You have successfully clocked out.')
 
-                # Fetch all ClockIn instances for the current day
-                today_min = datetime.combine(date.today(), time.min)
-                today_max = datetime.combine(date.today(), time.max)
-                todays_clock_ins = ClockIn.objects.filter(employee=request.user, time__range=(today_min, today_max))
+                    # Fetch all ClockIn instances for the current day
+                    today_min = datetime.combine(date.today(), time.min)
+                    today_max = datetime.combine(date.today(), time.max)
+                    todays_clock_ins = ClockIn.objects.filter(employee=request.user, time__range=(today_min, today_max))
 
-                return render(request, 'clock_out.html', {'clock_ins': todays_clock_ins})
+                    return render(request, 'loghours.html', {'clock_ins': todays_clock_ins})
         except DatabaseError:
             messages.error(request, 'You are not clocked in.')
             return render(request, 'loghours.html')
+        return HttpResponseRedirect('/loghours/')
 
 
 class RegisterView(View):
@@ -113,8 +134,10 @@ class RegisterView(View):
         form = CustomUserCreationForm(request.POST)
         if form.is_valid():
             form.save()
+            messages.success(request, 'Registration successful. Please log in.')
             return redirect('login')
         return render(request, 'register.html', {'form': form})
+
     
 
 class UserInfoView(View):
@@ -131,7 +154,6 @@ class UserInfoView(View):
             return redirect('home')
         return render(request, 'user_info.html', {'form': form})
 
-
 @csrf_exempt
 def contact(request):
     if request.method == 'POST':
@@ -144,7 +166,7 @@ def contact(request):
             'Contact form submission from ' + name,
             'Phone number: ' + phone_number + '\nMessage:\n' + message,
             email,
-            ['your-email@example.com'],  # Replace with your email
+            ['ethansmasters@outlook.com'],  # Replace with your email
             fail_silently=True,
         )
 

@@ -29,5 +29,5 @@
     {% csrf_token %}
     <button type="submit" {% if status != 'IN' %}disabled{% endif %}>Clock Out</button>
   </form>
-  <p><a href="{% url 'logout' %}">Logout</a></p>
+  <p><a href="{% url 'login' %}">Logout</a></p>
 {% endblock %}
