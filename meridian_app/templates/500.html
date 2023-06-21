@@ -1,0 +1,59 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+
+<style>
+    body {
+        background-image: url('https://images.unsplash.com/photo-1560437324-cbed9eacf52c?ixid=M3w5MTMyMXwwfDF8c2VhcmNofDN8fGF0bGFudGF8ZW58MHx8fHwxNjg7MjY3NjY3fDA&ixlib=rb-4.0.3&h=2000');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        border: 50px solid transparent;
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-family: Arial, sans-serif;
+    }
+
+    .error-container {
+        text-align: center;
+        background: rgba(0, 0, 0, 0.5);
+        padding: 50px;
+        border: 10px solid rgba(255, 255, 255, 0.5);
+    }
+
+    .error-container h1 {
+        font-size: 5em;
+    }
+
+    .error-container p {
+        font-size: 2em;
+    }
+
+    @media only screen and (max-width: 600px) {
+        body {
+            border: 20px solid transparent;
+        }
+        .error-container {
+            padding: 20px;
+        }
+        .error-container h1 {
+            font-size: 3em;
+        }
+        .error-container p {
+            font-size: 1em;
+        }
+    }
+</style>
+
+<div class="error-container">
+    <h1>404</h1>
+    <p>Sorry, this page is under maintenance.</p>
+</div>
+
+{% endblock %}
