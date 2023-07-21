@@ -1,7 +1,5 @@
 # MeridianApplication
-A Django and Python-based website application for logging employee hours and serving as a landing page for a fire alarm and security company. It offers features to track and manage employee work hours efficiently while providing a professional online presence for the company. Collaborative, version-controlled, and well-documented on GitHub."
-
-Sure, here is some documentation for the project:
+A Django and Python-based website application for logging employee hours and serving as a landing page for a fire alarm and security company. It offers features to track and manage employee work hours efficiently while providing a professional online presence for the company. Collaborative, version-controlled, and well-documented on GitHub.
 
 **Introduction**
 
