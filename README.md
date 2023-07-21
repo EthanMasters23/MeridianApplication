@@ -43,4 +43,3 @@ If you would like to contribute to the project, you can do so by forking the rep
 
 If you find any issues with the project, you can report them by creating an issue on GitHub.
 
-I hope this documentation is helpful. Please let me know if you have any other questions.
